@@ -1,0 +1,71 @@
+[{
+		"id": 1,
+		"name": "ROUND RING",
+		"image": "1.jpg",
+		"price": "300",
+		"inventoryStatus": "INSTOCK"
+	},
+	{
+		"id": 2,
+		"name": "DIAMOND EARING",
+		"image": "2.jpg",
+		"price": "200",
+		"inventoryStatus": "INSTOCK"
+	},
+	{
+		"id": 3,
+		"name": "NOSEPIN",
+		"image": "3.jpg",
+		"price": "200",
+		"inventoryStatus": "INSTOCK"
+	},
+	{
+		"id": 4,
+		"name": "24 KARAT DIAMOND EARING",
+		"image": "4.jpg",
+		"price": "200",
+		"inventoryStatus": "INSTOCK"
+	},
+	{
+		"id": 5,
+		"name": "GOD RING",
+		"image": "5.jpg",
+		"price": "200",
+		"inventoryStatus": "INSTOCK"
+	},
+	{
+		"id": 6,
+		"name": "22 KARAT GOLD RING",
+		"image": "6.jpg",
+		"price": "200",
+		"inventoryStatus": "INSTOCK"
+	},
+	{
+		"id": 7,
+		"name": "DIAMOND PENDANT",
+		"image": "7.jpg",
+		"price": "200",
+		"inventoryStatus": "INSTOCK"
+	},
+	{
+		"id": 8,
+		"name": "PENDANT",
+		"image": "8.jpg",
+		"price": "200",
+		"inventoryStatus": "INSTOCK"
+	},
+	{
+		"id": 9,
+		"name": "RING",
+		"image": "9.jpg",
+		"price": "200",
+		"inventoryStatus": "INSTOCK"
+	},
+	{
+		"id": 10,
+		"name": "STONE",
+		"image": "10.jpg",
+		"price": "200",
+		"inventoryStatus": "INSTOCK"
+	}
+]

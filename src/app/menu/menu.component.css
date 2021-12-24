@@ -1,0 +1,18 @@
+h1 {
+    background-color: blue;
+    color: white;
+}
+
+.navbar-light {
+    background-color: #e9c456;
+}
+
+.btn-outline-success{
+    color: white;
+    border-color: white;
+}
+
+.btn-outline-success:hover{
+    background-color: #e9c456;
+    color:grey
+}

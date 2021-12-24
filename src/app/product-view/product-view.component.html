@@ -1,0 +1,32 @@
+
+<div class="row">
+    <div class="col">
+        <div class="card mb-4 shadow-sm">
+            <p-galleria [(value)]="images2" [responsiveOptions]="responsiveOptions" panelWidth="573" panelHeight="573" frameWidth="120" frameHeight="80" [containerStyle]="{'max-width': '660px'}" [numVisible]="4"
+    thumbnailsPosition="left" >
+    <ng-template pTemplate="item" let-item>
+        <div class="a">
+        <img [src]="item.path" style="width: 100%; display: block;height: 400px;" />
+    </div>
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <div class="p-grid p-nogutter p-justify-center">
+            <img [src]="item.path" style="width: 20px; display: block;"/>
+        </div>
+    </ng-template>
+</p-galleria>
+        </div>
+    </div>  
+
+    <div class="col-md-7">
+         {{products.name}}<br><br>
+        <strong>  {{ products.price | currency:'INR' }}</strong><br><br>
+        {{ products.description }}<br><br><br>
+        
+        <button type="button" class="btn btn-sm btn-primary product-btn " (click)="addtocart(products)">{{value}}</button>
+        <br> <br> 
+        Delivery Details 
+        <br><br>
+         <input type=text placeholder="Pin Code"> 
+    </div>
+</div>

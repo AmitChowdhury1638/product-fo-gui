@@ -1,0 +1,34 @@
+.a  {
+    position: relative;
+    z-index: 1;
+    margin: 0px auto;
+    overflow: hidden;
+    list-style: none;
+    padding: 0px;
+    background: white;
+    margin-bottom: 5px;
+    float: right;
+}
+
+.p-galleria .p-galleria-item-nav {
+    background-color: slategray !important;
+}
+
+.pull-left {
+    float: left!important;
+}
+
+.far fa-heart {
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    width: 50px;
+    min-width: 50px;
+    margin-right: 10px;
+    line-height: 52px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(66, 162, 162);
+    border-image: initial;
+    border-radius: 5px;
+}

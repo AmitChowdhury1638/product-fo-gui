@@ -1,0 +1,8 @@
+<p-carousel [value]="images" [autoplayInterval]="3000" [circular]="true" [responsiveOptions]="responsiveOptions">
+    <ng-template pTemplate="header">
+        <h5></h5>
+    </ng-template>
+    <ng-template let-image pTemplate="item">
+        <img src="{{ image}}" width="100%">  
+    </ng-template>
+</p-carousel>

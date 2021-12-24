@@ -1,0 +1,25 @@
+ img {
+    padding: 0px;
+    width: 165px;
+    height: 165px;
+    border-radius: 12px;
+    margin: 0 auto;
+    display:block;
+  }
+
+.carousalell {
+  background-color: #d8d4c442;
+  padding: 20px;
+}
+
+h4 {
+    font-size: medium;
+    text-align: center;
+    font-weight: 500;
+    color: darkslategray;
+}
+
+h6 {
+  text-align: center;
+  font-weight: bolder;
+}
