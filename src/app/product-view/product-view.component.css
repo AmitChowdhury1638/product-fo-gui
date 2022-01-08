@@ -32,3 +32,61 @@
     border-image: initial;
     border-radius: 5px;
 }
+
+.product-name {
+    margin-bottom: 2px;
+    font-size: 15px;
+    font-family: montserrat,cursive;
+    line-height: 20px;
+    color: rgba(0,0,0,.7);
+    font-weight: 500;
+}
+
+.product-price {
+    font-size: 235%;
+}
+
+.product-description {
+    margin-bottom: 2px;
+    padding: 12px 2px;
+    font-size: 15px;
+    font-family: revert;
+    line-height: 20px;
+    color: rgba(0,0,0,.7);
+    font-weight: 500;
+}
+
+.delivery-details {
+    font-family: montserrat-regular,sans-serif;
+    font-size: 16px;
+    font-weight: lighter;
+    padding-top: 24px;
+    padding-bottom: 12px;
+    color: #333;
+    text-transform: none;
+}
+
+.far,.fas{
+    color: palevioletred;
+    size: 20%;
+}
+
+.pmts-pr {
+    padding: 18px;
+    width: 66%;
+    float: left;
+    display: inline;
+}
+
+.pmts-btn {
+    padding: 6px; 
+    background: #42a2a2; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    font-family: montserrat,sans-serif; 
+    color: #fff; 
+    margin: 0;
+    text-transform: uppercase;
+    width: 30%;
+    border: none;
+}
