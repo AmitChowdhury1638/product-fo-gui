@@ -26,7 +26,16 @@
                                                 [routerLink]="['/product',item.id]"></td>
                                         <td style="width: 25%;">{{item.description}}</td>
                                         <th style="width: 12%;">{{item.price | currency:'INR' }}</th>
-                                        <td style="width: 12%;">{{item.qty}}</td>
+                                        <td style="width: 12%;">
+                                            <button (click)="increment(item)">
+                                                <i class="fa fa-plus"  ></i>
+                                            </button>
+                                            {{item.qty}}
+                                            <button (click)="decrement(item)">
+                                                <i class="fa fa-minus"  ></i>
+                                            </button>
+                                        </td>
+                                        <!-- <td style="width: 12%;">{{item.qty}}</td> -->
                                         <td style="width: 12%;">{{ (item.qty * item.price) | currency:'INR' }}</td>
                                         <td>
                                             <button (click)="removeItem(item)" class="btn btn-danger"><i
