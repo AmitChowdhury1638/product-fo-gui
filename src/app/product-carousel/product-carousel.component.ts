@@ -35,9 +35,20 @@ export class ProductCarouselComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.advertisementService.getAdvertisementByName("carousel2").subscribe((data)=>{
+    // this.advertisementService.getAdvertisementByName("carousel2").subscribe((data)=>{
+    //   console.log(data)
+    //  this.p=data.imagePath.split(",")
+    // })
+
+    this.advertisementService.getAdvertisement().subscribe((data)=>{
       console.log(data)
-     this.p=data.imagePath.split(",")
+      for(let i=0;i<data.length;i++){
+        if(data[i].name=="carousel2"){
+          this.p=data[i].imagePath.split(",")
+          console.log(this.p)
+        }
+      }
+    
     })
   }
 
