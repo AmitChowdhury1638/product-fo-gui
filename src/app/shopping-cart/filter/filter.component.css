@@ -1,17 +1,6 @@
-.filter {
-    border: 1px solid grey; 
-    padding: 2px; 
-    margin: 2px; 
-    width: 260px;
+::ng-deep .btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    text-decoration: none !important;
 }
 
-.filter-text {
-    padding-left: 2px;
-    font-size: small;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.filter-header {
-    font-size: medium;
-}
 

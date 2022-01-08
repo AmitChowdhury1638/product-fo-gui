@@ -42,6 +42,8 @@ import { AccordionModule } from 'primeng/accordion';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CartFinalComponent } from './shopping-cart/cart/cart-final/cart-final.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -86,7 +88,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     GalleriaModule,
     AccordionModule,
     RadioButtonModule,
-
+    MatExpansionModule,
+    NgbModule
   ],
   providers: [DialogService],
   bootstrap: [AppComponent]

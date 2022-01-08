@@ -1,53 +1,30 @@
-
-
-<div class="grid">
-    
-    <div class="filter">
-        <div class="col-12 md:col-6 lg:col-3">
-            <h6>RANGE</h6>
-        </div>
-        <div class="col-12 md:col-6 lg:col-3">
-             <p-slider [(ngModel)]="rangeValues" [range]="true" [max]=100000 (onSlideEnd)="onCheckboxChange($event)"></p-slider>
-            <div style="padding: 6px;">{{rangeValues[0]+'-'+rangeValues[1]}}</div> 
-        </div>
-    </div>
-
-    <p-accordion >
-    <div class="filter">
-       <p-accordionTab header="{{ filter_1 }}">
-        <div class="col-12 md:col-6 lg:col-3">
+<ngb-accordion>
+	<ngb-panel title="Panel 1">
+		<ng-template ngbPanelContent>
+			<div class="col-12 md:col-6 lg:col-3">
             <div *ngFor="let item of f1">
                 <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedValues" (onChange)="onCheckboxChange($event)" ></p-checkbox>
                 <span class="filter-text">{{item.name}}</span>
             </div>
         </div>
-        </p-accordionTab>
-    </div>
-
-    <div class="filter">
-        <p-accordionTab header="{{ filter_2 }}">
-            <div class="col-12 md:col-6 lg:col-3">
+		</ng-template>
+	</ngb-panel>
+	<ngb-panel title="Panel 2">
+		<ng-template ngbPanelContent>
+			<div class="col-12 md:col-6 lg:col-3">
                 <div *ngFor="let item of f2">
                     <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)" ></p-checkbox>
                     <span class="filter-text">{{item.name}}</span>
                 </div>
             </div>
-        </p-accordionTab>
-    </div>
-
-    <div class="filter">
-        <p-accordionTab header="{{ filter_3 }}">
-            <div class="col-12 md:col-6 lg:col-3">
-                <div *ngFor="let item of f3">
+		</ng-template>
+	</ngb-panel>
+	<ngb-panel title="Panel 3">
+		<ng-template ngbPanelContent>
+			<div *ngFor="let item of f3">
                     <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)" ></p-checkbox>
                     <span class="filter-text">{{item.name}}</span>
                 </div>
-            </div>
-        </p-accordionTab>
-    </div>
-</p-accordion>
-</div>
-
-
-
-
+		</ng-template>
+	</ngb-panel>
+</ngb-accordion>
