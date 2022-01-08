@@ -64,3 +64,8 @@
    color: cornsilk;
    text-decoration: none;
 }
+
+.btn-custom {
+  color: rgba(255,255,255,.5);
+  background-color: #343a40;
+}
