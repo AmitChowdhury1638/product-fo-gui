@@ -33,7 +33,7 @@ export class SharedService {
       price: product.price,
       name: product.name,
       description: product.description,
-      imageUrl:  product.imagepath,
+      imageUrl:  product.imagePath,
       discount: product.discount,
       id: product.id
     });
