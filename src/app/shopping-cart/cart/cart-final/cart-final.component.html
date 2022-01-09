@@ -3,15 +3,16 @@
         <ng-container *ngIf="cartItems.length !=0">
             <div class="col-md-1"></div>
             <div class="col-md-6">
-                <div style="border: 1px solid grey;border-radius: 5px;">
+                <div class="cart-item" 
+                    *ngFor="let item of cartItems; let i = index">
                     <div class="added-item-row">
                         <div class="added-item1">
-                            <div>Jet Black Half Sleeve T-Shirt</div>
-                            <div class="price">₹7,800.00</div>
-                            <div>Jet Black Half Sleeve T-Shirt</div>
+                            <div>{{item.name}}</div>
+                            <div class="price">{{item.price | currency:'INR' }}</div>
+                            <div>{{item.description}}</div>
                         </div>
                         <div class="added-item2">
-                            <img src="https://apurva25.s3.ap-south-1.amazonaws.com/1641647414068-9.jpg">
+                            <img style="width: 120px;" src="{{item.imageUrl}}" alt="" [routerLink]="['/product',item.id]">
                         </div>
                     </div>
                     <!-- <div class="added-item-row">

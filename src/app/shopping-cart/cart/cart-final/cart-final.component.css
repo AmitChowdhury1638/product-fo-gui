@@ -1,3 +1,9 @@
+.cart-item {
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-bottom: 18px;
+}
+
 .added-item1 {
     display: inline;
     float: left;
