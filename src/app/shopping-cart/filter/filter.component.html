@@ -1,5 +1,5 @@
 <ngb-accordion>
-	<ngb-panel title="Panel 1">
+	<ngb-panel title="Product Type">
 		<ng-template ngbPanelContent>
 			<div class="col-12 md:col-6 lg:col-3">
             <div *ngFor="let item of f1">
@@ -9,7 +9,7 @@
         </div>
 		</ng-template>
 	</ngb-panel>
-	<ngb-panel title="Panel 2">
+	<ngb-panel title="Purity">
 		<ng-template ngbPanelContent>
 			<div class="col-12 md:col-6 lg:col-3">
                 <div *ngFor="let item of f2">
@@ -19,7 +19,7 @@
             </div>
 		</ng-template>
 	</ngb-panel>
-	<ngb-panel title="Panel 3">
+	<ngb-panel title="Metal Colour">
 		<ng-template ngbPanelContent>
 			<div *ngFor="let item of f3">
                     <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)" ></p-checkbox>

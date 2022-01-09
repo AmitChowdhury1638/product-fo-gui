@@ -1,3 +1,62 @@
+.added-item1 {
+    display: inline;
+    float: left;
+    width: 50%;
+    height: 146px;
+    padding: 12px;
+    color: grey;
+    text-transform: capitalize;
+    font-family: montserrat-regular,sans-serif;
+    font-size: 13px;
+    line-height: 1.33;
+    padding-bottom: 10px;
+}
+
+.added-item2 {
+    display: inline;
+    width: 50%;
+    height: 146px;
+    padding: 12px;
+    color: grey;
+    text-transform: capitalize;
+    font-family: montserrat-regular,sans-serif;
+    font-size: 13px;
+    line-height: 1.33;
+    padding-bottom: 10px;
+}
+
+.added-item-row {
+    display: block;
+    height: 156px;
+}
+
+img {
+    width:12%;
+    height:120px;
+    float: right;
+    margin: 18px;
+}
+
+.added-item.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.price {
+    font-weight: bolder;
+    color: grey;
+}
+
+.added-item-button {
+    display: inline;
+    float: left;
+    width: 50%;
+    height: 32px;
+    padding: 1px 219px;
+}
+
 .price-summary {
     font-size: 12px;
     font-weight: 600;

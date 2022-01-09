@@ -1,68 +1,29 @@
 <div style="height: 480px;padding-top: 60px;">
     <div class="row">
-        <div class="col-md-8">
-            <ng-container *ngIf="cartItems.length !=0">
-                <div class="container">
-                    <div class="card-table">
-                        <div class="cart-product">
-                            <table class="table table-responsive">
-                                <thead>
-                                    <tr>
-                                        <th>Sr.No</th>
-                                        <th>Name</th>
-                                        <th>Image</th>
-                                        <th>Description</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let item of cartItems; let i = index">
-                                        <td>{{i+1}}</td>
-                                        <td>{{item.name}}</td>
-                                        <td><img style="width: 120px;" src="{{item.imageUrl}}" alt=""
-                                                [routerLink]="['/product',item.id]"></td>
-                                        <td style="width: 25%;">{{item.description}}</td>
-                                        <th style="width: 12%;">{{item.price | currency:'INR' }}</th>
-                                        <td style="width: 12%;">
-                                            <button (click)="increment(item)">
-                                                <i class="fa fa-plus"  ></i>
-                                            </button>
-                                            {{item.qty}}
-                                            <button (click)="decrement(item)">
-                                                <i class="fa fa-minus"  ></i>
-                                            </button>
-                                        </td>
-                                        <!-- <td style="width: 12%;">{{item.qty}}</td> -->
-                                        <td style="width: 12%;">{{ (item.qty * item.price) | currency:'INR' }}</td>
-                                        <td>
-                                            <button (click)="removeItem(item)" class="btn btn-danger"><i
-                                                    class="fas fa-trash-alt"></i></button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="4"></td>
-                                        <td><button (click)="emptycart()" class="btn btn-danger">Empty Cart</button>
-                                        </td>
-                                        <td><button routerLink="/shoping-cart" class="btn btn-primary">Shop
-                                                More</button>
-                                        </td>
-                                        <td><button class="btn btn-success">Checkout</button></td>
-                                        <td><strong>Grand Total : {{cartTotal | currency:'INR' }}</strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+        <ng-container *ngIf="cartItems.length !=0">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div style="border: 1px solid grey;border-radius: 5px;">
+                    <div class="added-item-row">
+                        <div class="added-item1">
+                            <div>Jet Black Half Sleeve T-Shirt</div>
+                            <div class="price">₹7,800.00</div>
+                            <div>Jet Black Half Sleeve T-Shirt</div>
+                        </div>
+                        <div class="added-item2">
+                            <img src="https://apurva25.s3.ap-south-1.amazonaws.com/1641647414068-9.jpg">
                         </div>
                     </div>
-                </div>
-            </ng-container>
-        </div>
+                    <!-- <div class="added-item-row">
+                        <div class="added-item-button1">Delete</div>
+                        <div class="added-item-button2">Wishlist</div>
+                    </div>     -->
+                </div> 
+            </div>
 
 
-        <ng-container *ngIf="cartItems.length !=0">
-            <div class="col">
+        
+            <div class="col-md-4">
                 <div class="prc-summary">
                     <div class="price-summary">
                         Price Summary
@@ -106,6 +67,7 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-1"></div>    
         </ng-container>
     </div>
 </div>
