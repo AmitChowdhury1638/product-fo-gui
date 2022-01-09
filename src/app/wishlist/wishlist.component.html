@@ -1,0 +1,27 @@
+<div style="height: 480px;padding-top: 60px;">
+    <div class="row">
+        <ng-container >
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="cart-item"
+                    *ngFor="let item of wishlistItems; let i = index">
+                    <div class="added-item-row">
+                        <div class="added-item1">
+                            <div>{{item.name}}</div>
+                            <div class="price">{{item.price | currency:'INR' }}</div>
+                            <div>{{item.description}}</div>
+                        </div>
+                        <div class="added-item2">
+                            <img style="width: 120px;" src="{{item.imageUrl}}" alt="" [routerLink]="['/product',item.id]">
+                        </div>
+                    </div>
+                    <div class="added-item-button">
+                        <!-- <div class="added-item-delete">Delete</div>
+                        <div class="added-item-wishlist">Move to Wishlist</div> -->
+                        <div class="btn-group">
+                            <button class="button" (click)="removeItem(item)">Delete</button>
+                            <button class="button">Move to Wishlist</button>
+                          </div>
+                    </div>
+                </div> 
+            </div>
