@@ -15,27 +15,43 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 export class ProductListComponent implements OnInit {
 
   clickEventSubscription: Subscription | undefined;
-  sortedValues: string[]=[];
+  sortedValues: string = '';
   productList: Product[] = [];
   sort: string='';
   images: any[]=[]
   f1: any;
+  f2: any;
+  f3: any;
+  price: any[] = [];
   constructor(private productService: ProductService,
               private msg: MessengerService) {
+                this.price = [
+                  {name: 'Price: Low-High'},
+                  {name: 'Price: High-Low'},
+                 
+              ];
+              console.log(this.sortedValues)
 
-                this.clickEventSubscription= this.msg.getMsgSort().subscribe((s: any)=>{
-                  this.sort=s 
-                  console.log(this.sort)                 
-                })
                 
-                this.clickEventSubscription= this.msg.getMsgEvent().subscribe(({filter1,filter2,price})=>{
-                  console.log(this.sort)
-                 // this.f1=filter1
-                 this.getProducts(filter1,filter2,price,this.sort);
-                })
                }
  
   ngOnInit(): void {
+    
+    this.clickEventSubscription= this.msg.getMsgEvent().subscribe(({filter1,filter2,price})=>{
+      this.f1 = filter1
+      this.f2 = filter2
+      this.f3 = price
+      console.log(this.sort)
+      this.getProducts(filter1,filter2,price,this.sort);
+     })
+
+    this.clickEventSubscription= this.msg.getMsgSort().subscribe((s: any)=>{
+      this.sort = s
+      console.log(this.f1)
+      this.getProducts(this.f1, this.f2, this.f3,this.sort);                 
+    })
+    
+    
   
     this.getProducts('','','','');
 
@@ -48,28 +64,55 @@ export class ProductListComponent implements OnInit {
     )
   }
 
-  getSortedProductsAsc($event: any){
+  getSortedProductsAsc(){
+    if(this.f1 == undefined){
+      console.log(this.sortedValues)
+      //if(this.sortedValues.length>0){
+        this.productService.getSortedProducts().subscribe((products)=>{
+        this.productList=products
+        console.log(products)
+         })
+     //}
+
+    } else{
+    console.log(this.f1)
     this.msg.sendMsgSort("low")
-    console.log(this.sortedValues)
-     if(this.sortedValues.length>0){
-       this.productService.getSortedProducts().subscribe((products)=>{
-       this.productList=products
-       console.log(products)
-        })
-    }else{
-     this.getProducts('','','','')
-   } 
+    }
 }
 
-getSortedProductsDesc($event: any){
+getSortedProductsDesc(){
+  //this.getProducts('','','',"high")
+  if(this.f1 == undefined && this.f2 == undefined && this.f3 == undefined){
+    console.log(this.sortedValues)
+   // if(this.sortedValues.length>0){
+      this.productService.getSortedProductsByDesc().subscribe((products)=>{
+      this.productList=products
+      console.log(products)
+       })
+  // }
+
+  } else{
   this.msg.sendMsgSort("high")
-  if(this.sortedValues.length>0){
-  this.productService.getSortedProductsByDesc().subscribe((products)=>{
-    this.productList=products
-  })
-}else{
-  this.getProducts('','','','')
-} 
+  }
+   /* if(this.sortedValues.length>0){
+    this.productService.getSortedProductsByDesc().subscribe((products)=>{
+      this.productList=products
+    })
+  }else{
+    this.getProducts('','','','')
+  } */
+}
+
+demo(a: any){
+  console.log(this.f1)
+  
+  if(a.name == "Price: Low-High"){
+    this.getSortedProductsAsc()
+  } else{
+    this.getSortedProductsDesc()
+  }
+
+    
 }
 
 } 

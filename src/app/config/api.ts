@@ -4,7 +4,7 @@ import {​​​​​​​​​ environment }​​​​​​​​​ fro
 import { isConstructorDeclaration } from 'typescript'
  
 export const baseUrl = environment.production ? 'https://api.shoppingcart.com' : 'http://localhost:8080'
-export const productsUrl = baseUrl + '/enableProducts'
+export const productsUrl = baseUrl + '/products'
 export const cartUrl = baseUrl + '/carts'
 export const wishlistUrl = baseUrl + '/wishlist'
 export const productsUrlType = baseUrl + '/products'

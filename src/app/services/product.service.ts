@@ -17,41 +17,59 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(t: string,p: string,pr: string,s: string): Observable<Product[]>{
-  if(t=="" && p!="" && pr!=""){
-  return this.http.get<Product[]>(productsUrl,{
-    params:{
-     // type: t,
-      filter2: p,
-      price: pr
-    }
-  });
-}else if(p=="" && t!="" && pr!=""){
-  return this.http.get<Product[]>(productsUrl,{
-    params:{
-      filter1: t,
-     // purity: p,
-      price: pr
-    }
-  });
-}else if(p=="" && t=="" && pr!=""){
-  return this.http.get<Product[]>(productsUrl,{
-    params:{
-    //  type: t,
-     // purity: p,
-      price: pr
-    }
-  });
-}else{
-  return this.http.get<Product[]>(productsUrl,{
-    params:{
-      filter1: t,
-      filter2: p,
-      price: pr,
-      sort: s
-    }
-  });
-}
+    if(t=="" && p!="" && pr!="" && s==""){
+    return this.http.get<Product[]>(productsUrl,{
+      params:{
+       // type: t,
+        filter2: p,
+        price: pr
+      }
+    });
+  }else if(p=="" && t!="" && pr!="" && s!=""){
+    return this.http.get<Product[]>(productsUrl,{
+      params:{
+        filter1: t,
+       // purity: p,
+        price: pr,
+        sort: s
+      }
+    });
+  }else if(p!="" && t=="" && pr!="" && s!=""){
+    return this.http.get<Product[]>(productsUrl,{
+      params:{
+        filter2: p,
+       // purity: p,
+        price: pr,
+        sort: s
+      }
+    });
+  }else if(t!="" && p=="" && pr!="" && s==""){
+    return this.http.get<Product[]>(productsUrl,{
+      params:{
+       // type: t,
+        filter1: t,
+        price: pr
+      }
+    });
+  }else if(p=="" && t=="" && pr!=""){
+    return this.http.get<Product[]>(productsUrl,{
+      params:{
+      //  type: t,
+       // purity: p,
+        price: pr
+      }
+    });
+  }else{
+    return this.http.get<Product[]>(productsUrl,{
+      params:{
+        filter1: t,
+        filter2: p,
+        price: pr,
+        sort: s
+      }
+    });
   }
+    }
 
    getById(id: any): Observable<Product[]> {
     return this.http.get<Product[]>('http://localhost:8080/products/'+id)
