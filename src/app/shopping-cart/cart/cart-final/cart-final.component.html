@@ -3,7 +3,7 @@
         <ng-container *ngIf="cartItems.length !=0">
             <div class="col-md-1"></div>
             <div class="col-md-6">
-                <div class="cart-item" 
+                <div class="cart-item"
                     *ngFor="let item of cartItems; let i = index">
                     <div class="added-item-row">
                         <div class="added-item1">
@@ -12,13 +12,17 @@
                             <div>{{item.description}}</div>
                         </div>
                         <div class="added-item2">
-                            <img style="width: 120px;" src="{{item.imagePath}}" >
+                            <img style="width: 120px;" src="{{item.imageUrl}}" alt="" [routerLink]="['/product',item.id]">
                         </div>
                     </div>
-                    <!-- <div class="added-item-row">
-                        <div class="added-item-button1">Delete</div>
-                        <div class="added-item-button2">Wishlist</div>
-                    </div>     -->
+                    <div class="added-item-button">
+                        <!-- <div class="added-item-delete">Delete</div>
+                        <div class="added-item-wishlist">Move to Wishlist</div> -->
+                        <div class="btn-group">
+                            <button class="button">Delete</button>
+                            <button class="button">Move to Wishlist</button>
+                          </div>
+                    </div>
                 </div> 
             </div>
 
