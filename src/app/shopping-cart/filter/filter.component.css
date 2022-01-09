@@ -1,4 +1,9 @@
 ::ng-deep .btn:not(:disabled):not(.disabled) {
     cursor: pointer;
     text-decoration: none !important;
+    color: black;
+}
+
+a {
+    color: black;
 }

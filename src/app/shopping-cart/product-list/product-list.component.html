@@ -1,5 +1,9 @@
-<div>
-  <p-dropdown [options]="price" [(ngModel)]="sortedValues" placeholder="Sort By" optionLabel="name" (onChange)="demo(sortedValues)" ></p-dropdown>
+<div class ="row">
+  <div class="col-md-9"></div>
+  <div class="col-md-1">
+    <p-dropdown [options]="price" [(ngModel)]="sortedValues" placeholder="Sort By" optionLabel="name" (onChange)="demo(sortedValues)" ></p-dropdown>
+  </div>
+  <div class="col-md-2"></div>
 </div>
 
 <div class ="row">
