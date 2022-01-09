@@ -1,4 +1,4 @@
-<div style="height: 480px;padding-top: 60px;">
+<div style="height: 480px;padding-top: 60px; overflow: auto;">
     <div class="row">
         <ng-container *ngIf="cartItems.length !=0">
             <div class="col-md-1"></div>
@@ -75,21 +75,20 @@
             <div class="col-md-1"></div>    
         </ng-container>
     </div>
-</div>
-
-
-
-<ng-container *ngIf="cartItems.length==0">
-    <div class="container">
-        <div class="card">
-            <h5 class="card-title">My Cart</h5>
-        </div>
-        <div class="center">
-            <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
-                alt="" style="position: center;">
-            <h4>Your cart is empty!</h4>
-            <h6>Add item to it now</h6>
-            <button routerLink="/shoping-cart" class="btn btn-primary">Shop Now</button>
-        </div>
+    <div class="row">
+        <ng-container *ngIf="cartItems.length==0">
+            <div class="container">
+                <div class="card">
+                    <h5 class="card-title">My Cart</h5>
+                </div>
+                <div class="center">
+                    <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
+                        alt="" style="position: center;">
+                    <h4>Your cart is empty!</h4>
+                    <h6>Add item to it now</h6>
+                    <button routerLink="/shoping-cart" class="btn btn-primary">Shop Now</button>
+                </div>
+            </div>
+        </ng-container>
     </div>
-</ng-container>
+</div>
