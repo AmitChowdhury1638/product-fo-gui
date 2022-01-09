@@ -19,8 +19,8 @@
                         <!-- <div class="added-item-delete">Delete</div>
                         <div class="added-item-wishlist">Move to Wishlist</div> -->
                         <div class="btn-group">
-                            <button class="button">Delete</button>
-                            <button class="button">Move to Wishlist</button>
+                            <button class="button" (click)="removeItem(item)">Delete</button>
+                            <button class="button" (click)="addToWishlist(item)">{{value}}</button>
                           </div>
                     </div>
                 </div> 

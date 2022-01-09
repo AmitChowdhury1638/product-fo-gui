@@ -68,7 +68,7 @@ export class ProductViewComponent implements OnInit {
      this._router.navigateByUrl("\cart")
     }
 
-    this.msg.sendMsg(this.products)
+    //this.msg.sendMsg(this.products)
     this.sharedService.addtoCart(item);
   }
  

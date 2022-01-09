@@ -7,6 +7,7 @@ import { FilterComponent } from '../../filter/filter.component';
 import { ShoppingCartComponent } from '../../shopping-cart.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { SharedService } from 'src/app/services/shared.service';
+import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-product-item',
@@ -24,7 +25,8 @@ export class ProductItemComponent implements OnInit {
     private msg: MessengerService,
     private productService: ProductService,
     private dialogService: DialogService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private wishlistService: WishlistService
     ) {
      }
 
@@ -40,11 +42,13 @@ export class ProductItemComponent implements OnInit {
     this.sharedService.addtoCart(item);
 }
 
-   handleAddToWishlist() {
+   handleAddToWishlist(item: any) {
      this.addedToWishlist = true;
+     this.wishlistService.addtoWishlist(item);
 }
 
-   handleRemoveFromWishlist() {
-  this.addedToWishlist = false;
+   handleRemoveFromWishlist(item: any) {
+     this.addedToWishlist = false;
+     this.wishlistService.removeWishlistItem(item)
 }
  }

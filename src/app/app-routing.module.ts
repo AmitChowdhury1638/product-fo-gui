@@ -14,6 +14,7 @@ import { FilterComponent } from './shopping-cart/filter/filter.component';
 import { ProductItemComponent } from './shopping-cart/product-list/product-item/product-item.component';
 import { ProductListComponent } from './shopping-cart/product-list/product-list.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 
 const routes: Routes = [
@@ -28,7 +29,8 @@ const routes: Routes = [
   { path:'upload', component: ImageUploadComponent },
   { path:'contact', component: ContactUsComponent },
   { path:'product/:id', component: ProductViewComponent },
-  { path:'cart', component: CartFinalComponent }
+  { path:'cart', component: CartFinalComponent },
+  { path:'wishlist', component: WishlistComponent }
 ];
 
 @NgModule({

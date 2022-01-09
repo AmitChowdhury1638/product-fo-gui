@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { SharedService } from 'src/app/services/shared.service';
+import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
 
 @Component({
   selector: 'app-cart-final',
@@ -15,8 +17,11 @@ export class CartFinalComponent implements OnInit {
   cartTotal = 0
   discountTotal=0
   grandTotal !: any;
+  value: string='Move to Wishlist'
   constructor(private msg: MessengerService,
-              private sharedService: SharedService) { }
+              private sharedService: SharedService,
+              private wishlistService: WishlistService,
+              private router: Router) { }
 
   ngOnInit(): void {
  
@@ -52,6 +57,17 @@ export class CartFinalComponent implements OnInit {
   decrement(item: any){
     this.sharedService.decrement(item)
     this.ngOnInit()
+  }
+
+  addToWishlist(item: any){
+    if (this.value=="Move to Wishlist"){
+      this.value = "Go to Wishlist";
+   }
+    else{
+     this.value = "Move to Wishlist";
+     this.router.navigateByUrl("\wishlist")
+    }
+    this.wishlistService.addtoWishlist(item)
   }
 
 }

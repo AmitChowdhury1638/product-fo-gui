@@ -7,8 +7,8 @@
         <p class="card-text1">{{ productItem.name }} </p>
         <p class="card-text">
           <strong>{{ productItem.price | currency:'INR' }}</strong>
-          <i *ngIf="!addedToWishlist" class='far fa-heart' (click)="handleAddToWishlist()" ></i>
-          <i *ngIf="addedToWishlist" class="fas fa-heart" (click)="handleRemoveFromWishlist()" ></i>
+          <i *ngIf="!addedToWishlist" class='far fa-heart' (click)="handleAddToWishlist(productItem)" ></i>
+          <i *ngIf="addedToWishlist" class="fas fa-heart" (click)="handleRemoveFromWishlist(productItem)" ></i>
         </p>
       </div>
     </div>       

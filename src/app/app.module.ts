@@ -45,6 +45,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {DropdownModule} from 'primeng/dropdown';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import {DropdownModule} from 'primeng/dropdown';
     ContactUsComponent,
     ProductViewComponent,
     CartFinalComponent,
+    WishlistComponent,
   ],
   imports: [
     DropdownModule,

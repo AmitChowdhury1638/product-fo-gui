@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../services/shared.service';
+import { WishlistService } from '../services/wishlist/wishlist.service';
 
 
 @Component({
@@ -8,16 +9,25 @@ import { SharedService } from '../services/shared.service';
   styleUrls: ['./topmenu.component.css']
 })
 export class TopmenuComponent implements OnInit {
-  totalItem : number = 0;
+  totalCartItem : number = 0;
+  totalWishlistItem: number = 0;
 
-  constructor(private sharedService: SharedService) { }
+  constructor(private sharedService: SharedService,
+              private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
     this.sharedService.getProducts()
     .subscribe(res=>{
-      this.totalItem = res.length;
+      this.totalCartItem = res.length;
+    })
+
+    this.wishlistService.getProducts()
+    .subscribe(res=>{
+      this.totalWishlistItem = res.length;
     })
     
   }
+
+  
 
 }
