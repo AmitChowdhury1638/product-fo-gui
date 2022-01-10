@@ -1,0 +1,17 @@
+
+
+.pmts-btn {
+    padding: 10px; 
+    margin-top: 15px;
+    background: #42a2a2; 
+    border-radius: 5px; 
+    font-size: 14px; 
+    font-family: montserrat,sans-serif; 
+    color: #fff; 
+    text-transform: uppercase;
+    width: 100%;
+    border: none;
+    background-color: rgb(228, 169, 93);
+    border-color: rgb(228, 169, 93);
+    color: white;
+}

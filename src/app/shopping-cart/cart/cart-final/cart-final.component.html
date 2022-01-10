@@ -78,15 +78,15 @@
     <div class="row">
         <ng-container *ngIf="cartItems.length==0">
             <div class="container">
-                <div class="card">
-                    <h5 class="card-title">My Cart</h5>
+                <div>
+                    <h2>Cart</h2>
                 </div>
-                <div class="center">
-                    <img src="https://rukminim1.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
-                        alt="" style="position: center;">
-                    <h4>Your cart is empty!</h4>
-                    <h6>Add item to it now</h6>
-                    <button routerLink="/shoping-cart" class="btn btn-primary">Shop Now</button>
+                <div class="card">
+                    <div style="font-size: large;padding: 4px;margin: 12px;">Your cart is currently empty!</div>
+                </div>
+                <div style="padding-top: 15px;">
+                    <button class="pmts-btn" routerLink="/shoping-cart"
+                        style="background-color: rgb(228, 169, 93); border-color: rgb(228, 169, 93); color: white;">Shop Now</button>
                 </div>
             </div>
         </ng-container>
