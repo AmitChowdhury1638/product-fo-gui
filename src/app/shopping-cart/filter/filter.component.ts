@@ -95,6 +95,9 @@ export class FilterComponent implements OnInit {
     this.filter2=''
     }
   }
+  clear(){
+    console.log("success")
+  }
 }
 
 
