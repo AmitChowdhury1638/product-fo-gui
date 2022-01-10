@@ -47,11 +47,11 @@ export class SharedService {
       if (this.cartItemList[i].productId === product.id) {
         if(this.cartItemList[i].qty==1){
           this.cartItemList[i].qty=1;
+         // this.cartItemList[i].discount = 56
           break;
         }
         this.cartItemList[i].qty--
-        
-       productExists = true
+        productExists = true
         break;
       }
     }

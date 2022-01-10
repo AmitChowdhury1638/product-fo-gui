@@ -50,4 +50,6 @@ export class WishlistService {
     })
     this.productList.next(this.wishlistItemList);
   }
+
+  
 }
