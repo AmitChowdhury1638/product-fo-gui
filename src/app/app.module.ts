@@ -10,7 +10,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import {CarouselModule} from 'primeng/carousel';
 import { MenuComponent } from './menu/menu.component';
 import {MegaMenuModule} from 'primeng/megamenu';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { TopmenuComponent } from './topmenu/topmenu.component';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import {ButtonModule} from 'primeng/button';
@@ -76,6 +76,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     WishlistComponent,
   ],
   imports: [
+    ReactiveFormsModule,
     DropdownModule,
     BrowserModule,
     HttpClientModule,

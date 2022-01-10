@@ -38,7 +38,7 @@ export class ProductItemComponent implements OnInit {
  }
 
   addtocart(item: any){
-    this.msg.sendMsg(this.productItem)
+    //this.msg.sendMsg(this.productItem)
     this.sharedService.addtoCart(item);
 }
 
