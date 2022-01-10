@@ -10,13 +10,13 @@
                             <div>{{item.name}}</div>
                             <div class="price">{{item.price | currency:'INR' }}</div>
                             <div>{{item.description}}</div>
-                            <div>
-                                <button (click)="increment(item)">
-                                    <i class="fa fa-plus"  ></i>
-                                </button>
-                                {{item.qty}}
+                            <div class="increment">
                                 <button (click)="decrement(item)">
                                     <i class="fa fa-minus"  ></i>
+                                </button>
+                                {{item.qty}}
+                                <button (click)="increment(item)">
+                                    <i class="fa fa-plus"  ></i>
                                 </button>
                             </div>
                         </div>
