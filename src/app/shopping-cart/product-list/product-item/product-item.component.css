@@ -30,3 +30,10 @@
     padding: 1.25rem 1.25rem .75rem 1.25rem;
 }
 
+button {
+    background-color: #ca9f68;
+    border-color: #ca9f68;
+    color: white;
+    border-radius: 6px;
+    height: 42px;
+}

@@ -90,3 +90,12 @@
     width: 30%;
     border: none;
 }
+
+button {
+    background-color: #ca9f68;
+    border-color: #ca9f68;
+    color: white;
+    border-radius: 6px;
+    height: 42px;
+    width: 30%;
+}
