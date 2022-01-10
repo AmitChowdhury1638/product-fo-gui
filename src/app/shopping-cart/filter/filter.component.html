@@ -33,3 +33,13 @@
 		</ng-template>
 	</ngb-panel>
 </ngb-accordion>
+
+<div class="filter">
+    <div class="col-12 md:col-6 lg:col-3">
+        <h6>RANGE</h6>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+         <p-slider [(ngModel)]="rangeValues" [range]="true" [max]=100000 (onSlideEnd)="onCheckboxChange($event)"></p-slider>
+        <div style="padding: 6px;">{{rangeValues[0]+'-'+rangeValues[1]}}</div>
+    </div>
+</div>

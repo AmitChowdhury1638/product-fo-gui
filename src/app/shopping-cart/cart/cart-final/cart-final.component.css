@@ -138,10 +138,6 @@ img {
     padding-bottom: 10px;
 }
 
-.price {
-    color:black;
-}
-
 .savingLabel {
     background-color: rgb(245, 231, 214);
     color: rgb(29, 136, 2);
@@ -172,6 +168,19 @@ img {
     text-transform: uppercase;
     width: 30%;
     border: none;
+}
+
+.itemName {
+    padding: 4px 1px;
+}
+
+.price {
+    color:black;
+    font-size: 14px;
+}
+
+.quantityInStock {
+    padding: 4px 1px;
 }
 
 .increment {

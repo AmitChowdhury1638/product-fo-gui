@@ -7,14 +7,14 @@
                     *ngFor="let item of cartItems; let i = index">
                     <div class="added-item-row">
                         <div class="added-item1">
-                            <div>{{item.name}}</div>
+                            <div class="itemName"><span style="font-size: 18px;font-weight: 300;">{{item.name}}</span></div>
                             <div class="price">{{item.price | currency:'INR' }}</div>
-                            <div>{{item.description}}</div>
+                            <div class="quantityInStock"><span style="font-size: 14px;font-weight: 300;">Availability: </span><span style="color:#5be05b;font-weight: 600;">{{quantity}} in stock </span></div>
                             <div class="increment">
                                 <button (click)="decrement(item)">
                                     <i class="fa fa-minus"  ></i>
                                 </button>
-                                {{item.qty}}
+                                <span style="color: black; padding: 1px 4px;">{{item.qty}}</span>
                                 <button (click)="increment(item)">
                                     <i class="fa fa-plus"  ></i>
                                 </button>

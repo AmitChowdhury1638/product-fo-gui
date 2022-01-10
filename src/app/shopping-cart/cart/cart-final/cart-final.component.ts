@@ -15,6 +15,7 @@ export class CartFinalComponent implements OnInit {
   products : any = [];
   cartItems: any = [];
   cartTotal = 0
+  quantity = 130
   discountTotal=0
   grandTotal !: any;
   value: string='Move to Wishlist'

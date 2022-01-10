@@ -52,8 +52,10 @@ export class FilterComponent implements OnInit {
 
     this.filterService.getSlider1().subscribe((filter)=>{
       this.slider1=filter
-      this.rangeValues[0]=this.slider1[0].minValue
-      this.rangeValues[1]=this.slider1[0].maxValue
+      // this.rangeValues[0]=this.slider1[0].minValue
+      // this.rangeValues[1]=this.slider1[0].maxValue
+      this.rangeValues[0]=0;
+      this.rangeValues[1]=100000;
     })
     
    
