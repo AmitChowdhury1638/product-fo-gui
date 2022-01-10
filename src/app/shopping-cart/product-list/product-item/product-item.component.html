@@ -5,11 +5,14 @@
       <img class="bd-placeholder-img card-img-top p-0" width="100%" height="240px" alt="fy" [src]="productItem.imagePath" [routerLink]="['/product',productItem.id]" style="cursor: pointer;" /> 
       <div class="card-body">
         <p class="card-text1">{{ productItem.name }} </p>
-        <p class="card-text">
+        <p class="card-text2">
           <strong>{{ productItem.price | currency:'INR' }}</strong>
           <i *ngIf="!addedToWishlist" class='far fa-heart' (click)="handleAddToWishlist(productItem)" ></i>
           <i *ngIf="addedToWishlist" class="fas fa-heart" (click)="handleRemoveFromWishlist(productItem)" ></i>
         </p>
+      </div>
+      <div class="pmts-btn">
+        <button style="background-color: #343a40; color: white; border-radius: 6px; height: 42px;">ADD TO CART</button>
       </div>
     </div>       
   </div>

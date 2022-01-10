@@ -10,6 +10,23 @@
     margin: 0;
 }
 
+.card-text2{
+    color: #000;
+    font-size: 18px;
+    line-height: normal;
+    margin: 0;
+}
 
+.pmts-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: .75rem;
+}
 
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem 1.25rem .75rem 1.25rem;
+}
 
