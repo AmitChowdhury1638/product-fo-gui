@@ -31,4 +31,46 @@ export class RegisterService {
     console.log("in put")
     return this.http.put('http://localhost:8080/userDetail'+'/'+data.id, data);
   }
+
+  editCartId(cartId: any):  Observable<any>{
+     return this.http.get<any>('http://localhost:8080/updateCartId'
+  , {
+     params:{
+       cartIds: cartId
+     }
+   }
+  );
+  }
+
+  editWishlistId(wishlistId: any):  Observable<any>{
+    return this.http.get<any>('http://localhost:8080/updateWishlistId'
+ , {
+    params:{
+      wishlistIds: wishlistId
+    }
+  }
+ );
+ }
+
+  deleteCartIds(cartId: any):  Observable<any>{
+    console.log(cartId)
+     return this.http.get<any>('http://localhost:8080/deleteCartIds'
+  , {
+     params:{
+       cartIds: cartId
+     }
+   }
+  );
+  }
+
+  deleteWishlistIds(wishlistId: any):  Observable<any>{
+    console.log(wishlistId)
+     return this.http.get<any>('http://localhost:8080/deleteWishlistIds'
+  , {
+     params:{
+       wishlistIds: wishlistId
+     }
+   }
+  );
+  }
 }

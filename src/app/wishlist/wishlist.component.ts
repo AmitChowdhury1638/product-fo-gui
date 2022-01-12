@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../services/shared.service';
 import { WishlistService } from '../services/wishlist/wishlist.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { WishlistService } from '../services/wishlist/wishlist.service';
 export class WishlistComponent implements OnInit {
   wishlistItems: any = [];
 
-  constructor(private wishlistService: WishlistService) { }
+  constructor(private wishlistService: WishlistService,
+              private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.wishlistService.getProducts()
@@ -21,6 +23,10 @@ export class WishlistComponent implements OnInit {
 
   removeItem(item: any){
     this.wishlistService.removeWishlistItem(item)
+  }
+
+  addToCart(item: any){
+    this.sharedService.addtoCart(item);
   }
 
 }

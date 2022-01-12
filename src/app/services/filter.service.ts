@@ -25,15 +25,5 @@ export class FilterService {
     return this.http.get<any>('http://localhost:8080/slider1')
   } 
 
-  getConfiguration(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/configuration')
- }
-
- getConfigurationByKey(key: string): Observable<any>{
-  return this.http.get<any>('http://localhost:8080/configurationByKey',{
-    params:{
-      key: key
-    }
-  })
-}
+  
 }

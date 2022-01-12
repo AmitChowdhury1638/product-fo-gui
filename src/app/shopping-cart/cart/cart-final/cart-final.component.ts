@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { MessengerService } from 'src/app/services/messenger.service';
+import { RegisterService } from 'src/app/services/register/register.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
 
@@ -18,28 +19,33 @@ export class CartFinalComponent implements OnInit {
   quantity = 130
   discountTotal=0
   grandTotal !: any;
+  res: any
   value: string='Move to Wishlist'
   constructor(private msg: MessengerService,
               private sharedService: SharedService,
               private wishlistService: WishlistService,
-              private router: Router) { }
+              private router: Router,
+              private registerService: RegisterService) { }
 
   ngOnInit(): void {
- 
-  this.sharedService.getProducts()
+
+    this.sharedService.getProducts()
     .subscribe(res=>{
       this.cartItems = res;
       console.log(this.cartItems)
-      })
 
-    this.cartTotal = 0
-    this.cartItems.forEach((item: {  qty: number;price: number; }) => {
+      this.cartTotal = 0
+    this.cartItems.forEach((item: {  qty: number; price: number; discount: number }) => {
     this.cartTotal +=  (item.qty * item.price)
+    this.discountTotal = item.discount * item.qty
    })
 
-    this.cartItems.forEach((item: {  discount: number; }) => {
-    this.discountTotal += item.discount
-  })
+  //   this.cartItems.forEach((item: {  discount: number; }) => {
+  //   this.discountTotal += item.discount
+  // })
+      })
+
+    
 }
 
   removeItem(item: any){

@@ -103,12 +103,14 @@ export class ProductService {
     return this.http.post<any>(this.baseApiUrl, formData,{ observe: 'response' })
     }
 
-    createEmail(name1: string,email1: string,message: string) : Observable<Object>{
+    createEmail(name1: string,email1: string,message: string,toEmail: string,fromEmail: string) : Observable<Object>{
       return this.http.get('http://localhost:8080/sendemail',{
         params:{
         name: name1,
         email: email1,
-        message: message
+        message: message,
+        toEmail: toEmail,
+        fromEmail: fromEmail
       }
       }
     );

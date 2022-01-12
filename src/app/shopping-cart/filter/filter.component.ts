@@ -7,6 +7,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ProductListComponent } from '../product-list/product-list.component';
 import {AccordionModule} from 'primeng/accordion';
 import { FilterService } from 'src/app/services/filter.service';
+import { ConfigurationService } from 'src/app/services/configuration/configuration.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ import { FilterService } from 'src/app/services/filter.service';
 })
 export class FilterComponent implements OnInit {
 
-  rangeValues: number[] = [];
+  rangeValues: number[] = [0,100000];
   selectedValues: string[]=[];
   selectedPurities: string[]=[];
   filter1: string=''
@@ -35,7 +36,8 @@ export class FilterComponent implements OnInit {
 
   constructor(private filterService: FilterService,
               private route: ActivatedRoute,
-              private msg: MessengerService) { }
+              private msg: MessengerService,
+              private configurationService: ConfigurationService) { }
 
   ngOnInit(): void {
     this.filterService.getFilter1().subscribe((filter)=>{
@@ -52,24 +54,25 @@ export class FilterComponent implements OnInit {
 
     this.filterService.getSlider1().subscribe((filter)=>{
       this.slider1=filter
-      // this.rangeValues[0]=this.slider1[0].minValue
-      // this.rangeValues[1]=this.slider1[0].maxValue
-      this.rangeValues[0]=0;
-      this.rangeValues[1]=100000;
+       this.rangeValues[0]=this.slider1[0].minValue
+       this.rangeValues[1]=this.slider1[0].maxValue
+      // this.maxValue = this.rangeValues[1]
+      //this.rangeValues[0]=0;
+      //this.rangeValues[1]=100000;
     })
     
    
-    this.filterService.getConfigurationByKey("filter1").subscribe((data)=>{
+    this.configurationService.getConfigurationByKey("filter1").subscribe((data)=>{
       this.filter_1=data[0].value
       console.log(data)
     })
   
-    this.filterService.getConfigurationByKey("filter2").subscribe((data)=>{
+    this.configurationService.getConfigurationByKey("filter2").subscribe((data)=>{
       this.filter_2=data[0].value
       console.log(data)
     })
 
-    this.filterService.getConfigurationByKey("filter3").subscribe((data)=>{
+    this.configurationService.getConfigurationByKey("filter3").subscribe((data)=>{
       this.filter_3=data[0].value
       console.log(data)
     })
@@ -95,9 +98,7 @@ export class FilterComponent implements OnInit {
     this.filter2=''
     }
   }
-  clear(){
-    console.log("success")
-  }
+  
 }
 
 
