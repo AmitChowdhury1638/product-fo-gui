@@ -1,43 +1,40 @@
-<div style="height: 480px;padding-top: 60px; overflow: auto;">
-    <div class="row">
-        <ng-container *ngIf="cartItems.length !=0">
-            <div class="col-md-1"></div>
-            <div class="col-md-6">
-                <div class="cart-item"
+<div style="height: 480px;padding-top: 60px; margin: 12px;overflow: auto;">
+    <ng-container >
+        <div class="row">
+            <div class="col-1 col-md-1"></div>
+            <div class="col-10 col-md-6">
+                <div class="row"
                     *ngFor="let item of cartItems; let i = index">
-                    <div class="added-item-row">
-                        <div class="added-item1">
-                            <div class="itemName"><span style="font-size: 18px;font-weight: 300;">{{item.name}}</span></div>
-                            <div class="price">{{item.price | currency:'INR' }}</div>
-                            <div class="quantityInStock"><span style="font-size: 14px;font-weight: 300;">Availability: </span><span style="color:#5be05b;font-weight: 600;">{{quantity}} in stock </span></div>
-                            <div class="increment">
-                                <button (click)="decrement(item)">
-                                    <i class="fa fa-minus"  ></i>
-                                </button>
-                                <span style="color: black; padding: 1px 4px;">{{item.qty}}</span>
-                                <button (click)="increment(item)">
-                                    <i class="fa fa-plus"  ></i>
-                                </button>
+                    <div class="col-12 col-md-12">
+                        <div class="row customer-border">
+                            <div class="col-9 col-md-10">
+                                <div>{{item.name}}</div>
+                                <div class="price">{{item.price | currency:'INR' }}</div>
+                                <div class="quantityInStock"><span style="font-size: 14px;font-weight: 300;">Availability: </span><span style="color:#5be05b;font-weight: 600;">{{quantity}} in stock </span></div>
+                                <div class="increment">
+                                    <button (click)="decrement(item)">
+                                        <i class="fa fa-minus"  ></i>
+                                    </button>
+                                    <span style="color: black; padding: 1px 4px;">{{item.qty}}</span>
+                                    <button (click)="increment(item)">
+                                        <i class="fa fa-plus"  ></i>
+                                    </button>
+                                </div>
                             </div>
+                            <img class="col-3 col-md-2" src="{{item.imageUrl}}" alt="" [routerLink]="['/product',item.id]">
                         </div>
-                        <div class="added-item2">
-                            <img style="width: 120px;" src="{{item.imageUrl}}" alt="" [routerLink]="['/product',item.id]">
+                        <div class="row" style="border-bottom: 1px solid black;">
+                            <div class="col-6 col-md-6 delete_btn" (click)="removeItem(item)">Delete</div>
+                            <div class="col-6 col-md-6 wishlist_btn" (click)="addToWishlist(item)">Add to Wishlist</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12"></div>
                         </div>
                     </div>
-                    <div class="added-item-button">
-                        <!-- <div class="added-item-delete">Delete</div>
-                        <div class="added-item-wishlist">Move to Wishlist</div> -->
-                        <div class="btn-group">
-                            <button class="button" (click)="removeItem(item)">Delete</button>
-                            <button class="button" (click)="addToWishlist(item)">{{value}}</button>
-                          </div>
-                    </div>
-                </div> 
+                </div>
             </div>
-
-
-        
-            <div class="col-md-4">
+            <div class="col-1 col-md-1"></div>
+            <div class="col-11 col-md-3" *ngIf="cartItems.length!=0">
                 <div class="prc-summary">
                     <div class="price-summary">
                         Price Summary
@@ -65,8 +62,6 @@
                             </span>
                         </div>
                     </div>
-
-
                     <div class="pmts-wrap">
                         <div class="pmts-pr">
                             <div>Total</div>
@@ -81,12 +76,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>    
-        </ng-container>
-    </div>
-    <div class="row">
-        <ng-container *ngIf="cartItems.length==0">
-            <div class="container">
+            <div class="col-1 col-md-1"></div>
+        </div>
+        <div class="row" *ngIf="cartItems.length==0">
+            <div class="col-1 col-md-2"></div>
+            <div class="col-10 col-md-8">
                 <div>
                     <h2>Cart</h2>
                 </div>
@@ -98,6 +92,7 @@
                         style="background-color: rgb(228, 169, 93); border-color: rgb(228, 169, 93); color: white;">Shop Now</button>
                 </div>
             </div>
-        </ng-container>
-    </div>
+            <div class="col-1 col-md-2"></div>
+        </div>
+    </ng-container>
 </div>
