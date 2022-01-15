@@ -1,0 +1,65 @@
+<div class="row">.</div>
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="guest-form-card card">
+   
+        <div class="card-header text-center">
+          <h2>Checkout</h2>
+        </div>
+   
+        <div class="card-body">
+          <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" >
+            <div class="form-group">
+              <label for="firstname">First name</label>
+              <input type=text formControlName="firstname" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Last name</label>
+                <input type=text formControlName="lastname" class="form-control" />
+              </div>
+            
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" formControlName="emailId"  class="form-control" />
+              </div>
+  
+              <div class="form-group">
+                  <label for="mobile">Mobile number</label>
+                  <input id="mobile" formControlName="mobileNumber" class="form-control" />
+              </div>
+
+            <div class="form-group">
+                <label for="buildingname">Flat no / Building name</label>
+                <input type="text" formControlName="buildingname"  class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="area">Area / Locality</label>
+                <input type="text" formControlName="area"  class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="landmark">Landmark</label>
+                <input type="text" formControlName="landmark"  class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" formControlName="city"  class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" formControlName="state"  class="form-control" />
+            </div>
+    
+            <div>
+              <button class="pmts-btn">Place order</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">.</div>
