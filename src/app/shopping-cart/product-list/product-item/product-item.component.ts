@@ -8,6 +8,7 @@ import { ShoppingCartComponent } from '../../shopping-cart.component';
 import { DialogService } from 'primeng/dynamicdialog';
 import { SharedService } from 'src/app/services/shared.service';
 import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
+import { RegisterService } from 'src/app/services/register/register.service';
 
 @Component({
   selector: 'app-product-item',
@@ -26,7 +27,8 @@ export class ProductItemComponent implements OnInit {
     private productService: ProductService,
     private dialogService: DialogService,
     private sharedService: SharedService,
-    private wishlistService: WishlistService
+    private wishlistService: WishlistService,
+    private registerService: RegisterService
     ) {
      }
 
@@ -40,11 +42,13 @@ export class ProductItemComponent implements OnInit {
   addtocart(item: any){
     //this.msg.sendMsg(this.productItem)
     this.sharedService.addtoCart(item);
+   
 }
 
    handleAddToWishlist(item: any) {
      this.addedToWishlist = true;
      this.wishlistService.addtoWishlist(item);
+     
 }
 
    handleRemoveFromWishlist(item: any) {

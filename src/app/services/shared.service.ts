@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ProductService } from './product.service';
+import { RegisterService } from './register/register.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +10,38 @@ export class SharedService {
 
   public cartItemList : any =[]
   public productList = new BehaviorSubject<any>([]);
+  res: any
+  public myArray : any =[]
 
-  constructor() { }
+  constructor(private registerService: RegisterService,
+              private productService: ProductService) { 
+  
+    
+  }
 
   getProducts(){
+    this.registerService.getUserDetailById(1).subscribe((data)=>{
+      this.res = data
+      console.log(this.res.cartIds)
+      this.myArray = this.res.cartIds.split(',');
+      
+      for(let i =0;i<this.myArray.length;i++){
+        this.productService.getById(this.myArray[i]).subscribe((data)=>{
+          this.res = data;
+          console.log(this.res.id.length)
+          if(this.res.id == ""){
+            console.log("wrong")
+          
+          } else{
+            console.log("right")
+            this.addtoCart(this.res)
+
+          }
+          console.log("sanu")
+        })
+      }
+    
+    })
     return this.productList.asObservable();
   }
 
@@ -37,6 +67,9 @@ export class SharedService {
       discount: product.discount,
       id: product.id
     });
+    this.registerService.editCartId(product.id).subscribe(()=>{
+      
+    })
     this.productList.next(this.cartItemList);
  }
   }
@@ -74,6 +107,9 @@ export class SharedService {
       if(product.id=== a.id){
         this.cartItemList.splice(index,1);
       }
+    })
+    this.registerService.deleteCartIds(product.id).subscribe(()=>{
+      
     })
     this.productList.next(this.cartItemList);
   }
