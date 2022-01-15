@@ -4,7 +4,7 @@
 </div>
 
 <ngb-accordion>
-	<ngb-panel title={{filter_1}}>
+	<ngb-panel title="Category">
 		<ng-template ngbPanelContent>
 			<div class="col-12 md:col-6 lg:col-3">
             <div *ngFor="let item of f1">
@@ -14,7 +14,7 @@
         </div>
 		</ng-template>
 	</ngb-panel>
-	<ngb-panel title={{filter_2}}>
+	<ngb-panel title=Purity>
 		<ng-template ngbPanelContent>
 			<div class="col-12 md:col-6 lg:col-3">
                 <div *ngFor="let item of f2">
@@ -24,7 +24,7 @@
             </div>
 		</ng-template>
 	</ngb-panel>
-	<ngb-panel title="{{filter_3}}">
+	<ngb-panel title="Stone">
 		<ng-template ngbPanelContent>
 			<div *ngFor="let item of f3">
                     <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)" ></p-checkbox>
