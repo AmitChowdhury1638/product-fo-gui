@@ -46,6 +46,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {DropdownModule} from 'primeng/dropdown';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     ProductViewComponent,
     CartFinalComponent,
     WishlistComponent,
+    CheckoutComponent
   ],
   imports: [
     ReactiveFormsModule,
