@@ -32,3 +32,9 @@
 .text-row {
     margin: 24px 1px;
 }
+
+.icons {
+    font-size: 1.8rem;
+    padding-right: 2px;
+    vertical-align: middle;
+}

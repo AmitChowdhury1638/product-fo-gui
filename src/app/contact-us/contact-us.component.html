@@ -1,46 +1,54 @@
-<div class="main">
-    <div class="container">
-        <div class="getInTouch">
-            <div class="contact-heading">
-                GET IN TOUCH
+<ng-container>
+    <div class="row" style="margin:6%;">
+        <div class="col-12 col-md-6" style="padding-bottom: 10%;">
+            <div class="row">
+                <div class="col-12 col-md-12 contact-heading">
+                    GET IN TOUCH
+                </div>
             </div>
-            <div>
-                <div class="para-row">
-                    <i class="pi pi-compass" style="font-size: 2rem; padding-right: 2px;vertical-align: middle;"></i>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <i class="pi pi-compass icons"></i>
                     <span class="para">{{address}}</span>
                 </div>
-                <div class="para-row">
-                    <i class="pi pi-phone" style="font-size: 2rem; padding-right: 2px;vertical-align: middle;"></i>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <i class="pi pi-phone icons"></i>
                     <span class="para">{{mobile}}</span>
                 </div>
-                <div class="para-row">
-                    <i class="pi pi-mobile" style="font-size: 2rem; padding-right: 2px;vertical-align: middle;"></i>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <i class="pi pi-mobile icons"></i>
                     <span class="para">{{contactUsEmail}}</span>
                 </div>
             </div>
         </div>
-        <div class="sendMessage">
-            <div class="contact-heading">
-                SEND MESSAGE
+        <div class="col-12 col-md-6">
+            <div class="row">
+                <div class="col-12 col-md-12 contact-heading">
+                    SEND MESSAGE
+                </div>
             </div>
-          
-            <div style="margin: 15px 1px;">
-                <div class="text-row" style="display: inline; float: left;">
+            <div class="row">
+                <div class="col-6 col-md-6">
                     <input type="text" pInputText placeholder="Name" [(ngModel)] = "name">
                 </div>
-                <div class="text-row" style="display: inline; float: left; margin-left: 28px;">
+                <div class="col-6 col-md-6">
                     <input type="text" pInputText placeholder="Email" name="toEmail" [(ngModel)] = "email">
                 </div>
-                <div class="text-row">
-                    <textarea pInputTextarea placeholder="MESSAGE" cols="53" [(ngModel)] = "message" ></textarea>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <textarea pInputTextarea placeholder="MESSAGE" cols="51" [(ngModel)] = "message" ></textarea>
                 </div>
-                <div class="text-row" >
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
                     <button pButton type="button" (click)="onClick()"label="Send" class="p-button-outlined" style="border: 2px solid black;color: black;"></button>
                 </div>
             </div>
-      
         </div>
     </div>
-</div>
-
-
+</ng-container>
