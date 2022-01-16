@@ -1,9 +1,8 @@
-<div style="padding-top: 42px;">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-3">
-            <div class="card mb-4 shadow-lg">
-                <p-galleria [(value)]="images2" [responsiveOptions]="responsiveOptions" panelWidth="780"
+<div>
+    <div class="row" style="margin: 1% 9%">
+        <div class="col-12 col-md-6" style="display: flex;
+        justify-content: right;">
+            <p-galleria [(value)]="images2" [responsiveOptions]="responsiveOptions" panelWidth="780"
                     panelHeight="573" frameWidth="120" frameHeight="80" [containerStyle]="{'max-width': '660px'}"
                     [numVisible]="4" thumbnailsPosition="left">
                     <ng-template pTemplate="item" let-item>
@@ -13,31 +12,30 @@
                     </ng-template>
                     <ng-template pTemplate="thumbnail" let-item>
                         <div class="p-grid p-nogutter p-justify-center">
-                            <img [src]="item.path" style="width: 40px; display: block;" />
+                            <img [src]="item.path" style="width: 60px; display: block;" />
                         </div>
                     </ng-template>
                 </p-galleria>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-8">
+                    <div>
+                        <div class="product-name">{{products.name}}</div>
+                        <div class="product-price">{{ products.price | currency:'INR' }}</div>
+                        <div class="product-description">{{ products.description }}</div>
+                    </div>
+                    <div style="margin-top:5%;">
+                        <button (click)="addtocart(products)">{{value}}</button>
+                    </div>
+                    <div style="margin-top: 3%;">
+                        <div class="delivery-details">Delivery Detail</div>
+                        <input type="text" pInputText placeholder="Enter Pin Code"/>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
             </div>
         </div>
-
-        <div class="col-md-4">
-            <div>
-                <div class="product-name">{{products.name}}</div>
-                <div class="product-price">{{ products.price | currency:'INR' }}</div>
-                <div class="product-description">{{ products.description }}</div>
-            </div>
-            
-            <div>
-                <button (click)="addtocart(products)">{{value}}</button>
-            </div>
-            
-            <div>
-                <div class="delivery-details">Delivery Detail</div>
-                <input type="text" pInputText placeholder="Enter Pin Code"/>
-            </div>
-            
-        </div>
-        <div class="col-md-2"></div>
     </div>
-
 </div>

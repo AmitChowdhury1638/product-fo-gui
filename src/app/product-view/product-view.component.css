@@ -1,15 +1,3 @@
-.a  {
-    position: relative;
-    z-index: 1;
-    margin: 0px auto;
-    overflow: hidden;
-    list-style: none;
-    padding: 0px;
-    background: white;
-    margin-bottom: 5px;
-    float: right;
-}
-
 .p-galleria .p-galleria-item-nav {
     background-color: slategray !important;
 }
@@ -48,7 +36,7 @@
 
 .product-description {
     margin-bottom: 2px;
-    padding: 12px 2px;
+    padding: 2px 2px;
     font-size: 15px;
     font-family: revert;
     line-height: 20px;
