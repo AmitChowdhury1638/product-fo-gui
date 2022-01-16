@@ -1,45 +1,49 @@
-<div style="width: 100%;margin-bottom: 20px;">
-	<div style="width: 50%;display: inline; float: left;font-weight: 700;">FILTERS</div>
-	<div style="width: 50%;display: inline; float: right; text-align: right;text-decoration: none;font-style: oblique	;"><a href="/shoping-cart" >CLEAR ALL</a></div>
-</div>
-
-<ngb-accordion>
-	<ngb-panel title="Category">
-		<ng-template ngbPanelContent>
-			<div class="col-12 md:col-6 lg:col-3">
-            <div *ngFor="let item of f1">
-                <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedValues" (onChange)="onCheckboxChange($event)" ></p-checkbox>
-                <span class="filter-text">{{item.name}}</span>
-            </div>
-        </div>
-		</ng-template>
-	</ngb-panel>
-	<ngb-panel title=Purity>
-		<ng-template ngbPanelContent>
-			<div class="col-12 md:col-6 lg:col-3">
-                <div *ngFor="let item of f2">
-                    <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)" ></p-checkbox>
-                    <span class="filter-text">{{item.name}}</span>
-                </div>
-            </div>
-		</ng-template>
-	</ngb-panel>
-	<ngb-panel title="Stone">
-		<ng-template ngbPanelContent>
-			<div *ngFor="let item of f3">
-                    <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)" ></p-checkbox>
-                    <span class="filter-text">{{item.name}}</span>
-                </div>
-		</ng-template>
-	</ngb-panel>
-</ngb-accordion>
-
-<div class="filter">
-    <div class="col-12 md:col-6 lg:col-3">
-        <h6>RANGE</h6>
+<div style="margin:30px;">
+    <div class="row">
+        <div class="col-6 col-md-6" style="width: 50%;display: inline; float: left;font-weight: 700;">FILTERS</div>
+        <div class="col-6 col-md-6" style="width: 50%;display: inline; float: right; text-align: right;text-decoration: none;font-style: oblique	;"><a href="/shoping-cart" >CLEAR ALL</a></div>
     </div>
-    <div class="col-12 md:col-6 lg:col-3">
-         <p-slider [(ngModel)]="rangeValues" [range]="true" [max]=100000 (onSlideEnd)="onCheckboxChange($event)"></p-slider>
-        <div style="padding: 6px;">{{rangeValues[0]+'-'+rangeValues[1]}}</div>
+    
+    <div class="row">
+        <div class="col-12 col-md-12">
+            <ngb-accordion>
+                <ngb-panel title="Category">
+                    <ng-template ngbPanelContent>
+                        <div class="row">
+                            <div class="col-12 col-md-12">
+                                <div *ngFor="let item of f1">
+                                    <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedValues" (onChange)="onCheckboxChange($event)" ></p-checkbox>
+                                    <span class="filter-text">{{item.name}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+                <ngb-panel title=Purity>
+                    <ng-template ngbPanelContent>
+                        <div class="row">
+                            <div class="col-12 col-md-12">
+                                <div *ngFor="let item of f2">
+                                    <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)" ></p-checkbox>
+                                    <span class="filter-text">{{item.name}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+                <ngb-panel title="Stone">
+                    <ng-template ngbPanelContent>
+                        <div class="row">
+                            <div class="col-12 col-md-12">
+                                <div *ngFor="let item of f3">
+                                    <p-checkbox name="groupname" value={{item.name}} [(ngModel)]="selectedPurities" (onChange)="onCheckboxChange($event)" ></p-checkbox>
+                                    <span class="filter-text">{{item.name}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-panel>
+            </ngb-accordion>
+        </div>
     </div>
 </div>
