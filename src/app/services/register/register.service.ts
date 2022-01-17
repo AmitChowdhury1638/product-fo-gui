@@ -17,6 +17,16 @@ export class RegisterService {
     return this.http.get('http://localhost:8080/userDetail/'+id)
   }
 
+  getUserDetailByUsername(username: any):  Observable<any>{
+    return this.http.get<any>('http://localhost:8080/userDetailByUsername'
+ , {
+    params:{
+      username: username
+    }
+  }
+ );
+ }
+
   deleteUserDetail(data: any) {
     console.log('id :'+data.id);
     return this.http.delete('http://localhost:8080/userDetail'+'/'+data.id);
@@ -32,21 +42,23 @@ export class RegisterService {
     return this.http.put('http://localhost:8080/userDetail'+'/'+data.id, data);
   }
 
-  editCartId(cartId: any):  Observable<any>{
+  editCartId(cartId: any,username: any):  Observable<any>{
      return this.http.get<any>('http://localhost:8080/updateCartId'
   , {
      params:{
-       cartIds: cartId
+       cartIds: cartId,
+       username: username
      }
    }
   );
   }
 
-  editWishlistId(wishlistId: any):  Observable<any>{
+  editWishlistId(wishlistId: any,username: any):  Observable<any>{
     return this.http.get<any>('http://localhost:8080/updateWishlistId'
  , {
     params:{
-      wishlistIds: wishlistId
+      wishlistIds: wishlistId,
+      username: username
     }
   }
  );

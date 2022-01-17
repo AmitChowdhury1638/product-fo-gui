@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
+import { MessengerService } from './messenger.service';
 import { ProductService } from './product.service';
 import { RegisterService } from './register/register.service';
 
@@ -12,15 +13,24 @@ export class SharedService {
   public productList = new BehaviorSubject<any>([]);
   res: any
   public myArray : any =[]
+  clickEventSubscription: Subscription | undefined;
+  username: any
+  id: any
 
   constructor(private registerService: RegisterService,
-              private productService: ProductService) { 
+              private productService: ProductService,
+              private messengerService: MessengerService) { 
+                this.clickEventSubscription= this.messengerService.getLogin().subscribe((username: any)=>{
+                  this.username = username
+                  
+                })
   
     
   }
 
   getProducts(){
-    this.registerService.getUserDetailById(1).subscribe((data)=>{
+    console.log(this.username)
+    this.registerService.getUserDetailByUsername(this.username).subscribe((data)=>{
       this.res = data
       console.log(this.res.cartIds)
       this.myArray = this.res.cartIds.split(',');
@@ -50,7 +60,6 @@ export class SharedService {
     for (let i in this.cartItemList) {
       if (this.cartItemList[i].productId === product.id) {
         console.log("cart")
-      //  this.cartItemList[i].qty++
         productExists = true
         break;
       }
@@ -65,9 +74,10 @@ export class SharedService {
       description: product.description,
       imageUrl:  product.imagePath,
       discount: product.discount,
-      id: product.id
+      id: product.id,
+      //buttonValue: true
     });
-    this.registerService.editCartId(product.id).subscribe(()=>{
+    this.registerService.editCartId(product.id, this.username).subscribe(()=>{
       
     })
     this.productList.next(this.cartItemList);

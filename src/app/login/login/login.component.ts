@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessengerService } from 'src/app/services/messenger.service';
 import { RegisterService } from 'src/app/services/register/register.service';
 
 @Component({
@@ -11,8 +12,9 @@ import { RegisterService } from 'src/app/services/register/register.service';
 export class LoginComponent implements OnInit {
   res: any;
   userDetailForm!: FormGroup;
-  constructor(private service: RegisterService,
-              private router: Router) { }
+  constructor(private registerService: RegisterService,
+              private router: Router,
+              private messengerService: MessengerService) { }
 
   ngOnInit(): void {
     this.userDetailForm = new FormGroup({
@@ -24,14 +26,17 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.userDetailForm?.value.username)
-    this.service.getUserDetail().subscribe((data)=>{
+    this.registerService.getUserDetail().subscribe((data)=>{
       console.log(data)
       for(let i=0;i<data.length;i++){
         if(this.userDetailForm?.value.username == data[i].username && this.userDetailForm?.value.password == data[i].password ){
-          console.log("welcome") 
+          this.messengerService.sendLogin(data[i].username)
           this.router.navigateByUrl('/shoping-cart')
+          break;
         }
+        
       }
+      
 
     })
    

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { MessengerService } from '../services/messenger.service';
 import { SharedService } from '../services/shared.service';
 import { WishlistService } from '../services/wishlist/wishlist.service';
 
@@ -9,16 +11,25 @@ import { WishlistService } from '../services/wishlist/wishlist.service';
 })
 export class WishlistComponent implements OnInit {
   wishlistItems: any = [];
+  clickEventSubscription1: Subscription | undefined;
+  public username: string = '';
 
   constructor(private wishlistService: WishlistService,
-              private sharedService: SharedService) { }
+              private sharedService: SharedService,
+              private messengerService: MessengerService) {
+               
+               }
 
   ngOnInit(): void {
+  
     this.wishlistService.getProducts()
-    .subscribe(res=>{
-      this.wishlistItems = res;
-      console.log(this.wishlistItems)
-      })
+     .subscribe(res=>{
+       this.wishlistItems = res;
+       })
+
+       
+     
+    
   }
 
   removeItem(item: any){

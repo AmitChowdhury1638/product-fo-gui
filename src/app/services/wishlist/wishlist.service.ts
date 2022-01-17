@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { MessengerService } from '../messenger.service';
 import { ProductService } from '../product.service';
 import { RegisterService } from '../register/register.service';
 
@@ -12,14 +14,25 @@ export class WishlistService {
   public productList = new BehaviorSubject<any>([]);
   res: any
   public myArray : any =[]
+  clickEventSubscription: Subscription | undefined;
+  public username: string = '';
 
   constructor(private registerService: RegisterService,
-              private productService: ProductService) { }
+              private productService: ProductService,
+              private messengerService: MessengerService) {
+                this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
+                  this.username = username
+                  console.log(this.username)
+                  
+                })
+                
+               }
+
 
   getProducts(){
-    this.registerService.getUserDetailById(1).subscribe((data)=>{
+    console.log(this.username)
+    this.registerService.getUserDetailByUsername(this.username).subscribe((data)=>{
       this.res = data
-      console.log(this.res.wishlistIds)
       this.myArray = this.res.wishlistIds.split(',');
       
       for(let i =0;i<this.myArray.length;i++){
@@ -66,7 +79,7 @@ export class WishlistService {
     });
     
     this.productList.next(this.wishlistItemList);
-    this.registerService.editWishlistId(product.id).subscribe(()=>{
+    this.registerService.editWishlistId(product.id,this.username).subscribe(()=>{
       
     })
  }

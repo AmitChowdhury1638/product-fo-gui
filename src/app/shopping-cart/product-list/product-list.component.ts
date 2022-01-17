@@ -54,6 +54,7 @@ export class ProductListComponent implements OnInit {
     
   
     this.getProducts('','','','');
+    
 
   }
 
@@ -63,6 +64,8 @@ export class ProductListComponent implements OnInit {
     }
     )
   }
+
+  
 
   getSortedProductsAsc(){
     if(this.f1 == undefined){

@@ -9,6 +9,7 @@ export class MessengerService {
   subject = new Subject()
   subject1 = new Subject()
   subject2 = new Subject()
+  subject3 = new Subject()
 
 
   constructor() { }
@@ -37,5 +38,13 @@ export class MessengerService {
 
   getMsgSort(){
     return this.subject2.asObservable()
+  }
+
+  sendLogin(username: String){
+    this.subject3.next(username);
+  }
+
+  getLogin():Observable<any>{
+    return this.subject3.asObservable()
   }
 }

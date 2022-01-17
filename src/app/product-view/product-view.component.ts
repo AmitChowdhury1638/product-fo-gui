@@ -59,7 +59,7 @@ export class ProductViewComponent implements OnInit {
   }
 
   addtocart(item: any){
-  
+    
     if (this.value=="Add to cart"){
       this.value = "Go to Cart";
    }
