@@ -64,23 +64,25 @@ export class RegisterService {
  );
  }
 
-  deleteCartIds(cartId: any):  Observable<any>{
+  deleteCartIds(cartId: any,username: any):  Observable<any>{
     console.log(cartId)
      return this.http.get<any>('http://localhost:8080/deleteCartIds'
   , {
      params:{
-       cartIds: cartId
+       cartIds: cartId,
+       username: username
      }
    }
   );
   }
 
-  deleteWishlistIds(wishlistId: any):  Observable<any>{
+  deleteWishlistIds(wishlistId: any,username: any):  Observable<any>{
     console.log(wishlistId)
      return this.http.get<any>('http://localhost:8080/deleteWishlistIds'
   , {
      params:{
-       wishlistIds: wishlistId
+       wishlistIds: wishlistId,
+       username: username
      }
    }
   );

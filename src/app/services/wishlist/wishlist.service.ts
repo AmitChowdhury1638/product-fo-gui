@@ -92,7 +92,7 @@ export class WishlistService {
       }
     })
     this.productList.next(this.wishlistItemList);
-    this.registerService.deleteWishlistIds(product.id).subscribe(()=>{
+    this.registerService.deleteWishlistIds(product.id,this.username).subscribe(()=>{
       
     })
   }

@@ -118,7 +118,7 @@ export class SharedService {
         this.cartItemList.splice(index,1);
       }
     })
-    this.registerService.deleteCartIds(product.id).subscribe(()=>{
+    this.registerService.deleteCartIds(product.id, this.username).subscribe(()=>{
       
     })
     this.productList.next(this.cartItemList);

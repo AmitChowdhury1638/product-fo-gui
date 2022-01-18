@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { MessengerService } from '../services/messenger.service';
 import { SharedService } from '../services/shared.service';
@@ -15,13 +16,17 @@ export class TopmenuComponent implements OnInit {
   totalWishlistItem: number = 0;
   clickEventSubscription: Subscription | undefined;
   value: string = " "
+  login: string = "LOGIN"
 
   constructor(private sharedService: SharedService,
               private wishlistService: WishlistService,
-              private messengerService: MessengerService) { }
+              private messengerService: MessengerService,
+              private router: Router) { }
 
   ngOnInit(): void {
+  
     this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
+      console.log("pp")
       this.value = username
       this.sharedService.getProducts()
     .subscribe(res=>{
@@ -32,8 +37,7 @@ export class TopmenuComponent implements OnInit {
     .subscribe(res=>{
       this.totalWishlistItem = res.length;
     })
-    
-      
+    this.login = "LOGOUT"
     })
     this.sharedService.getProducts()
     .subscribe(res=>{
@@ -44,6 +48,20 @@ export class TopmenuComponent implements OnInit {
     .subscribe(res=>{
       this.totalWishlistItem = res.length;
     })
+    
+  }
+
+  show(){
+    if(this.login == "LOGIN"){
+    this.router.navigateByUrl("/login")
+    
+    }
+    else {
+      this.messengerService.sendLogin("")
+      this.login = "LOGIN"
+      this.totalCartItem = 0
+      this.totalWishlistItem = 0
+    }
     
   }
 
