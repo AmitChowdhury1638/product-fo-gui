@@ -27,7 +27,7 @@ import { FormsModule } from '@angular/forms';
 import {CheckboxModule} from 'primeng/checkbox';
 import { ProductItemComponent } from './shopping-cart/product-list/product-item/product-item.component';
 import { CartItemComponent } from './shopping-cart/cart/cart-item/cart-item.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './register/register/register.component';
 import { NgModule } from '@angular/core';
@@ -47,6 +47,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {DropdownModule} from 'primeng/dropdown';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { TranslateModule, TranslateLoader  } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader'; 
 
 @NgModule({
   declarations: [
@@ -96,7 +98,16 @@ import { CheckoutComponent } from './checkout/checkout.component';
     AccordionModule,
     RadioButtonModule,
     MatExpansionModule,
-    NgbModule
+    NgbModule,
+    TranslateModule.forRoot(
+      {
+        loader: {
+          provide: TranslateLoader,
+          useFactory: (http: HttpClient) => {return new TranslateHttpLoader(http, './assets/i18n/', '.json');},
+          deps: [HttpClient]
+        }
+      }
+    )
   ],
   providers: [DialogService],
   bootstrap: [AppComponent]

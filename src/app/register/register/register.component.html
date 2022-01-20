@@ -4,29 +4,29 @@
       <div class="guest-form-card card">
    
         <div class="card-header text-center">
-          <h2>Register Here</h2>
+          <h2>{{'text.registerHere' | translate}}</h2>
         </div>
    
         <div class="card-body">
           <form [formGroup]="userDetailForm" (ngSubmit)="onSubmit()" >
             <div class="form-group">
-              <label for="username">Username</label>
+              <label for="username">{{'label.username' | translate}}</label>
               <input type=text formControlName="username" class="form-control" />
             </div>
             
 
             <div class="form-group">
-              <label for="email">Email address</label>
+              <label for="email">{{'label.emailAddress' | translate}}</label>
               <input type="email" formControlName="emailId"  class="form-control" />
             </div>
 
           <div class="form-group">
-            <label for="mobile">Mobile number</label>
+            <label for="mobile">{{'label.mobileNumber' | translate}}</label>
             <input id="mobile" formControlName="mobileNumber" class="form-control" />
           </div>
  
           <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">{{'label.password' | translate}}</label>
             <div>
             <input type="password"  formControlName="password" id="password" name="password" class="form-control" ng-required=true />
             </div> 
@@ -34,7 +34,7 @@
           </div>
     
             <div>
-              <button class="pmts-btn">Login</button>
+              <button class="pmts-btn">{{'button.register' | translate}}</button>
             </div>
           </form>
         </div>

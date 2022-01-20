@@ -15,8 +15,8 @@
                             <img class="col-3 col-md-2" src="{{item.imageUrl}}" alt="" [routerLink]="['/product',item.id]">
                         </div>
                         <div class="row" style="border-bottom: 1px solid black;">
-                            <div class="col-6 col-md-6 delete_btn" (click)="removeItem(item)">Delete</div>
-                            <div class="col-6 col-md-6 wishlist_btn" (click)="addToCart(item)">Add to Cart</div>
+                            <div class="col-6 col-md-6 delete_btn" (click)="removeItem(item)">{{'button.delete' | translate}}</div>
+                            <div class="col-6 col-md-6 wishlist_btn" (click)="addToCart(item)">{{'button.addToCart' | translate}}</div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-12"></div>
@@ -32,14 +32,14 @@
             <div class="col-1 col-md-2"></div>
             <div class="col-10 col-md-8">
                 <div>
-                    <h2>Wishlist</h2>
+                    <h2>{{'text.wishlist' | translate}}</h2>
                 </div>
                 <div class="card">
-                    <div style="font-size: large;padding: 4px;margin: 12px;">Your wishlist is currently empty!</div>
+                    <div style="font-size: large;padding: 4px;margin: 12px;">{{'text.emptyWishlist' | translate}}</div>
                 </div>
                 <div style="padding-top: 15px;">
                     <button class="pmts-btn" routerLink="/shoping-cart"
-                        style="background-color: rgb(228, 169, 93); border-color: rgb(228, 169, 93); color: white;">Shop Now</button>
+                        style="background-color: rgb(228, 169, 93); border-color: rgb(228, 169, 93); color: white;">{{'button.shopNow' | translate}}</button>
                 </div>
             </div>
             <div class="col-1 col-md-2"></div>

@@ -24,8 +24,8 @@
                             <img class="col-3 col-md-2" src="{{item.imageUrl}}" alt="" [routerLink]="['/product',item.id]">
                         </div>
                         <div class="row" style="border-bottom: 1px solid black;">
-                            <div class="col-6 col-md-6 delete_btn" (click)="removeItem(item)">Delete</div>
-                            <div class="col-6 col-md-6 wishlist_btn" (click)="addToWishlist(item)">Add to Wishlist</div>
+                            <div class="col-6 col-md-6 delete_btn" (click)="removeItem(item)">{{'button.delete' | translate}}</div>
+                            <div class="col-6 col-md-6 wishlist_btn" (click)="addToWishlist(item)">{{'button.addToWishlist' | translate}}</div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-12"></div>
@@ -37,23 +37,23 @@
             <div class="col-11 col-md-3" *ngIf="cartItems.length!=0">
                 <div class="prc-summary">
                     <div class="price-summary">
-                        Price Summary
+                        {{'text.priceSummary' | translate}}
                     </div>
                     <div class="paymentBox ">
                         <div class="paymentBoxInner">
-                            <span>Total MRP</span>
+                            <span>{{'text.totalMrp' | translate}}</span>
                             <span class="price">{{cartTotal | currency:'INR' }}</span>
                         </div>
                         <div class="paymentBoxInner">
-                            <span>Delivery Fee</span>
-                            <span style="color: rgb(29, 136, 2);">FREE</span>
+                            <span>{{'text.deliveryFee' | translate}}</span>
+                            <span style="color: rgb(29, 136, 2);">{{'text.free' | translate}}</span>
                         </div>
                         <div class="paymentBoxInner">
-                            <span>Bag Discount</span>
+                            <span>{{'text.bagDiscount' | translate}}</span>
                             <span class="price">-{{ discountTotal | currency:'INR' }}</span>
                         </div>
                         <div class="paymentBoxInner" style="font-family: montserrat, sans-serif;">
-                            <span>Subtotal&nbsp;</span>
+                            <span>{{'text.subTotal' | translate}}&nbsp;</span>
                             <span class="price">{{ cartTotal-discountTotal | currency:'INR' }}</span>
                         </div>
                         <div class="savingLabel">
@@ -64,13 +64,13 @@
                     </div>
                     <div class="pmts-wrap">
                         <div class="pmts-pr">
-                            <div>Total</div>
+                            <div>{{'text.subTotal' | translate}}</div>
                             <div style="font-size: medium;">{{ cartTotal-discountTotal | currency:'INR' }}</div>
                         </div>
                         <div class="btn-area">
                             <div>
                                 <button id="os_payNow_btn" class="pmts-btn" routerLink="/login"
-                                    style="background-color: rgb(228, 169, 93); border-color: rgb(228, 169, 93); color: white;">Continue</button>
+                                    style="background-color: rgb(228, 169, 93); border-color: rgb(228, 169, 93); color: white;">{{'button.continue' | translate}}</button>
                             </div>
                         </div>
                     </div>
@@ -82,14 +82,14 @@
             <div class="col-1 col-md-2"></div>
             <div class="col-10 col-md-8">
                 <div>
-                    <h2>Cart</h2>
+                    <h2>{{'text.cart' | translate}}</h2>
                 </div>
                 <div class="card">
-                    <div style="font-size: large;padding: 4px;margin: 12px;">Your cart is currently empty!</div>
+                    <div style="font-size: large;padding: 4px;margin: 12px;">{{'text.emptyCart' | translate}}</div>
                 </div>
                 <div style="padding-top: 15px;">
                     <button class="pmts-btn" routerLink="/shoping-cart"
-                        style="background-color: rgb(228, 169, 93); border-color: rgb(228, 169, 93); color: white;">Shop Now</button>
+                        style="background-color: rgb(228, 169, 93); border-color: rgb(228, 169, 93); color: white;">{{'button.shopNow' | translate}}</button>
                 </div>
             </div>
             <div class="col-1 col-md-2"></div>

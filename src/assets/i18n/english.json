@@ -1,0 +1,50 @@
+{
+    "topmenu" : {
+        "contactUs": "CONTACT US",
+        "products": "PRODUCTS",
+        "login": "LOGIN",
+        "home": "HOME"
+    },
+
+    "button" : {
+        "addToCart": "ADD TO CART",
+        "addToWishlist": "ADD TO WISHLIST",
+        "shopNow": "SHOP NOW",
+        "delete": "Delete",
+        "continue": "CONTINUE",
+        "send": "SEND",
+        "register": "REGISTER",
+        "login": "LOGIN",
+        "signUp": "Sign Up"
+    },
+
+    "text" : {
+        "totalMrp": "Total Mrp",
+        "deliveryFee": "Delivery Fee",
+        "bagDiscount": "Bag Discount",
+        "subTotal": "Subtotal",
+        "priceSummary": "PRICE SUMMARY",
+        "cart": "Cart",
+        "wishlist": "Wishlist",
+        "total": "Total",
+        "free": "FREE",
+        "sortBy": "Sort By",
+        "emptyWishlist": "Your wishlist is currently empty!",
+        "emptyCart": "Your cart is currently empty!",
+        "filters": "FILTERS",
+        "clearAll": "CLEAR ALL",
+        "range": "RANGE",
+        "getInTouch": "GET IN TOUCH",
+        "sendMessage": "SEND MESSAGE",
+        "registerHere": "Register Here",
+        "loginHere": "Login Here"
+     },
+
+     "label" : {
+         "username": "Username",
+         "password": "Password",
+         "emailAddress": "Email Address",
+         "mobileNumber": "Mobile Number"
+
+     }
+}

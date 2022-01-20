@@ -1,0 +1,52 @@
+{
+    "topmenu" : {
+        "contactUs": "संपर्क करें",
+        "products": "उत्पादों",
+        "login": "लॉग इन करें",
+        "home": "होमपेज"
+    },
+
+    "button" : {
+        "addToCart": "कार्ट में जोड़ें",
+        "addToWishlist": "इच्छा सूची में जोड़ें",
+        "shopNow": "अभी खरीदें",
+        "delete": "हटाना",
+        "continue": "जारी रखें",
+        "send": "भेजना",
+        "register": "रजिस्टर करें",
+        "login": "लॉग इन करें",
+        "signUp": "साइन अप करें"
+
+    },
+
+    "text" : {
+        "totalMrp": "कुल कीमत",
+        "deliveryFee": "अर्पण शुल्क",
+        "bagDiscount": "बैग छूट",
+        "subTotal": "उप-योग",
+        "priceSummary": "कीमत सारांश",
+        "cart": "कार्ट",
+        "wishlist": "इच्छा-सूची",
+        "total": "कुल",
+        "free": "नि: शुल्क",
+        "sortBy": "इसके अनुसार क्रमबद्ध करें",
+        "emptyWishlist": "आपकी इच्छासूची इस समय खाली है!",
+        "emptyCart": "आपकी खरीदारी की टोकरी खाली है!",
+        "filters": "फिल्टर",
+        "clearAll": "सभी साफ करें",
+        "range": "श्रेणी",
+        "getInTouch": "संपर्क में रहो",
+        "sendMessage": "मेसेज भेजें",
+        "registerHere": "यहां रजिस्टर करें",
+        "loginHere": "यहां लॉगिन करें"
+
+    },
+
+    "label" : {
+        "username": "उपयोगकर्ता नाम",
+        "password": "पासवर्ड",
+        "emailAddress": "ईमेल",
+        "mobileNumber": "मोबाइल नंबर"
+
+    }
+}

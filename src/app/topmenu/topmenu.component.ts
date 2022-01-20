@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { MessengerService } from '../services/messenger.service';
 import { SharedService } from '../services/shared.service';
 import { WishlistService } from '../services/wishlist/wishlist.service';
+//import  top from '../../assets/i18n/en.json';
+//import {top as a} from '../../assets/i18n/en.json';
+
 
 
 @Component({
@@ -17,14 +21,23 @@ export class TopmenuComponent implements OnInit {
   clickEventSubscription: Subscription | undefined;
   value: string = " "
   login: string = "LOGIN"
+  supportLanguages = ['english', 'bangla', 'marathi', 'hindi'];
+  
 
   constructor(private sharedService: SharedService,
               private wishlistService: WishlistService,
               private messengerService: MessengerService,
-              private router: Router) { }
+              private router: Router,
+              private translateService: TranslateService) { 
+                this.translateService.addLangs(this.supportLanguages);
+                this.translateService.setDefaultLang('english');
+
+                //const browserlang = this.translateService.getBrowserLang();
+                //this.translateService.use(browserlang);
+              }
 
   ngOnInit(): void {
-  
+    
     this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
       console.log("pp")
       this.value = username
@@ -59,10 +72,15 @@ export class TopmenuComponent implements OnInit {
     else {
       this.messengerService.sendLogin("")
       this.login = "LOGIN"
+
       this.totalCartItem = 0
       this.totalWishlistItem = 0
     }
     
+  }
+
+  selectLang(lang: string){
+    this.translateService.use(lang)
   }
 
   

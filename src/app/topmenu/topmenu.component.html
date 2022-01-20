@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="nav-link" routerLink="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span style="color: rgba(255,255,255,.5);">HOME</span>
+    <span style="color: rgba(255,255,255,.5);">{{'topmenu.home' | translate}}</span>
   </a>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,11 +11,11 @@
     <ul class="navbar-nav mr-auto" style="padding-left: 15px;">
       
       <a class="nav-link" routerLink="shoping-cart" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span style="color: rgba(255,255,255,.5);">PRODUCTS</span>
+        <span style="color: rgba(255,255,255,.5);">{{'topmenu.products' | translate}}</span>
       </a>
 
       <a class="nav-link" routerLink="contact" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span style="color: rgba(255,255,255,.5);">CONTACT US</span>
+        <span style="color: rgba(255,255,255,.5);">{{'topmenu.contactUs' | translate}}</span>
       </a>
 
     </ul>
@@ -41,7 +41,13 @@
       <i style="font-size: 30px;" class="pi pi-shopping-cart"></i>
       <div style="font-size: 10px;" class="badge bg-primary">{{totalCartItem}}</div> 
      </button> 
-  
+      
+     <p>
+       Select Language:
+       <select (click)="selectLang($any($event.target).value)">
+         <option *ngFor="let item of supportLanguages">{{item}}</option>
+       </select>
+     </p>
 
     
   </div>

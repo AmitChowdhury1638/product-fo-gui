@@ -1,7 +1,7 @@
 <div style="margin:30px;">
     <div class="row">
-        <div class="col-6 col-md-6" style="width: 50%;display: inline; float: left;font-weight: 700;">FILTERS</div>
-        <div class="col-6 col-md-6" style="width: 50%;display: inline; float: right; text-align: right;text-decoration: none;font-style: oblique	;"><a href="/shoping-cart" >CLEAR ALL</a></div>
+        <div class="col-6 col-md-6" style="width: 50%;display: inline; float: left;font-weight: 700;">{{'text.filters' | translate}}</div>
+        <div class="col-6 col-md-6" style="width: 50%;display: inline; float: right; text-align: right;text-decoration: none;font-style: oblique	;"><a href="/shoping-cart" >{{'text.clearAll' | translate}}</a></div>
     </div>
     
     <div class="row">
@@ -49,7 +49,7 @@
 
     <div class="filter">
         <div class="col-12 md:col-6 lg:col-3">
-            <h6>RANGE</h6>
+            <h6>{{'text.range' | translate}}</h6>
         </div>
         <div class="col-12 md:col-6 lg:col-3">
              <p-slider [(ngModel)]="rangeValues" [range]="true" [max]=100000 (onSlideEnd)="onCheckboxChange($event)"></p-slider>
