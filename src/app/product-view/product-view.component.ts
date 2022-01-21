@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { ProductService } from 'src/app/services/product.service';
 import { Image } from '../models/image';
 import { Product } from '../models/product';
+import { LocaleTranslationService } from '../services/localetranslation/locale-translation.service';
 import { MessengerService } from '../services/messenger.service';
 import { SharedService } from '../services/shared.service';
 
@@ -19,6 +21,13 @@ export class ProductViewComponent implements OnInit {
   products:any
   images2: any
   value: string='Add to cart'
+  code: string = "eng";
+  clickEventSubscription: Subscription | undefined;
+  language: string = "english";
+  map = new Map();
+  key1: any
+  key2: any
+
   responsiveOptions:any[] = [
       {
           breakpoint: '1024px',
@@ -38,23 +47,66 @@ export class ProductViewComponent implements OnInit {
               private _router: Router,
               private productService: ProductService,
               private msg: MessengerService,
-              private sharedService: SharedService ) { }
+              private sharedService: SharedService,
+              private localeTranslationService: LocaleTranslationService ) { 
+                
+              }
+
+
+ 
 
   ngOnInit(): void {
+
+    this.localeTranslationService.getLocaleTranslation().subscribe((data)=>{
+      data.forEach((item: {  key: string, localeCode: string, translation: string }) => {
+        this.map.set(item.key + "_" + item.localeCode, item.translation)
+      })
+    })
+    
+    this.clickEventSubscription= this.msg.getLanguage().subscribe((language)=>{
+      this.language = language
+      if(this.language == "english")
+      this.code = "eng";
+      else if(this.language == "hindi")
+      this.code = "hin"
+      else if(this.language == "marathi")
+      this.code = "mar"
+      else if(this.language == "bangla")
+      this.code = "ben"
+      this.view()
+    })
+
+    
 
     this.sub=this._Activatedroute.paramMap.subscribe(params => { 
     this.id = params.get('id'); 
     this.view();
    });
-
-    this.productService.getImages(this.id).subscribe((images1)=>{
-    this.images2=images1
-  })
+   this.getImages()
+    
   }
- 
+  getImages(){
+    this.productService.getImages(this.id).subscribe((images1)=>{
+      this.images2=images1
+    })
+  }
+
   view(){
     this.productService.getById(this.id).subscribe((products)=>{
       this.products=products
+        this.key1 = this.products.name + "_" + this.code
+        this.products.name = this.map.get(this.key1)
+        this.key2 = this.products.description + "_" + this.code
+        this.products.description = this.map.get(this.key2)
+
+     
+      /*this.localeTranslationService.getLocaleTranslationByKey(this.products.description, this.code).subscribe((data)=>{
+        
+        this.products.description = data.translation
+      })
+      this.localeTranslationService.getLocaleTranslationByKey(this.products.name, this.code).subscribe((data)=>{
+        this.products.name = data.translation
+      })*/
     })
   }
 

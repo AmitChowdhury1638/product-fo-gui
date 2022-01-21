@@ -1,0 +1,51 @@
+{
+    "topmenu" : {
+        "contactUs": "आमच्याशी संपर्क साधा",
+        "products": "उत्पादने",
+        "login": "लॉगिन करा",
+        "home": "मुख्यपृष्ठ"
+    },
+
+    "button" : {
+        "addToCart": "कार्टमध्ये जोडा",
+        "addToWishlist": "विशलिस्टमध्ये जोडा",
+        "shopNow": "आत्ताच खरेदी करा",
+        "delete": "हटवा",
+        "continue": "सुरू",
+        "send": "पाठवा",
+        "register": "नोंदणी करा",
+        "login": "लॉगिन करा",
+        "signUp": "साइन अप करा"
+    },
+
+    "text" : {
+        "totalMrp": "एकूण किंमत",
+        "deliveryFee": "वितरण शुल्क",
+        "bagDiscount": "बॅग सवलत",
+        "subTotal": "बेरजे",
+        "priceSummary": "किंमत सारांश",
+        "cart": "कार्ट",
+        "wishlist": "विशलिस्ट",
+        "total": "एकूण",
+        "free": "फुकट",
+        "sortBy": "यानुसार क्रमवारी लावा",
+        "emptyWishlist": "तुमची विशलिस्ट सध्या रिकामी आहे!",
+        "emptyCart": "तुमची कार्ट सध्या रिकामी आहे!",
+        "filters": "फिल्टर",
+        "clearAll": "सर्व साफ करा",
+        "range": "रेंज",
+        "getInTouch": "संपर्कात रहाण्यासाठी",
+        "sendMessage": "संदेश पाठवा",
+        "registerHere": "येथे नोंदणी करा",
+        "loginHere": "येथे लॉगिन करा",
+        "deliveryDetail": "वितरण तपशील"
+     },
+
+     "label" : {
+         "username": "वापरकर्तानाव",
+         "password": "पासवर्ड",
+         "emailAddress": "ईमेल पत्ता",
+         "mobileNumber": "मोबाईल नंबर"
+
+     }
+}

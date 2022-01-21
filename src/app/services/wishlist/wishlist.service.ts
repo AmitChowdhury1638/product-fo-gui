@@ -38,12 +38,11 @@ export class WishlistService {
       for(let i =0;i<this.myArray.length;i++){
         this.productService.getById(this.myArray[i]).subscribe((data)=>{
           this.res = data;
-          console.log(this.res.id.length)
+          console.log(this.res)
           if(this.res.id == ""){
             console.log("wrong")
           
           } else{
-            console.log("right")
             this.addtoWishlist(this.res)
 
           }
@@ -56,9 +55,10 @@ export class WishlistService {
   }
 
   addtoWishlist(product : any){
+    console.log(product)
     let productExists = false
     for (let i in this.wishlistItemList) {
-      if (this.wishlistItemList[i].productId === product.id) {
+      if (this.wishlistItemList[i].id === product.id) {
         console.log("cart")
       //  this.cartItemList[i].qty++
         productExists = true
@@ -67,8 +67,8 @@ export class WishlistService {
     }
    if(!productExists){
     this.wishlistItemList.push( {
-      productId: product.id,
-      productName: product.name,
+      //productId: product.id,
+      //productName: product.name,
       qty: 1,
       price: product.price,
       name: product.name,

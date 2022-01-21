@@ -13,11 +13,13 @@ export class ConfigurationService {
     return this.http.get<any>('http://localhost:8080/configuration')
  }
 
- getConfigurationByKey(key: string): Observable<any>{
+ getConfigurationByKey(key: string, language: string): Observable<any>{
   return this.http.get<any>('http://localhost:8080/configurationByKey',{
     params:{
-      key: key
+      key: key,
+      language: language
     }
   })
 }
+
 }

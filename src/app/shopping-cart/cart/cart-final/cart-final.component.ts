@@ -28,25 +28,23 @@ export class CartFinalComponent implements OnInit {
               private registerService: RegisterService) { }
 
   ngOnInit(): void {
-
-    this.sharedService.getProducts()
-    .subscribe(res=>{
-      this.cartItems = res;
-      console.log(this.cartItems)
-
-      this.cartTotal = 0
-    this.cartItems.forEach((item: {  qty: number; price: number; discount: number }) => {
-    this.cartTotal +=  (item.qty * item.price)
-    this.discountTotal = item.discount * item.qty
-   })
-
-  //   this.cartItems.forEach((item: {  discount: number; }) => {
-  //   this.discountTotal += item.discount
-  // })
-      })
-
+    this.getProducts()
     
 }
+
+ getProducts(){
+  this.sharedService.getProducts()
+  .subscribe(res=>{
+    this.cartItems = res;
+    console.log(this.cartItems)
+
+    this.cartTotal = 0
+  this.cartItems.forEach((item: {  qty: number; price: number; discount: number }) => {
+  this.cartTotal +=  (item.qty * item.price)
+  this.discountTotal = item.discount * item.qty
+ })
+    })
+ }
 
   removeItem(item: any){
      this.sharedService.removeCartItem(item);

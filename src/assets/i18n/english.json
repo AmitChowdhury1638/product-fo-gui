@@ -37,7 +37,8 @@
         "getInTouch": "GET IN TOUCH",
         "sendMessage": "SEND MESSAGE",
         "registerHere": "Register Here",
-        "loginHere": "Login Here"
+        "loginHere": "Login Here",
+        "deliveryDetail": "Delivery Detail"
      },
 
      "label" : {

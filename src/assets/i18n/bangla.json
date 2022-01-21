@@ -1,0 +1,51 @@
+{
+    "topmenu" : {
+        "contactUs": "যোগাযোগ করুন",
+        "products": "পণ্য",
+        "login": "প্রবেশ করুন",
+        "home": "বাড়ি"
+    },
+
+    "button" : {
+        "addToCart": "কার্টে যোগ করুন",
+        "addToWishlist": "চাহিদাপত্রে যোগ করা",
+        "shopNow": "এখনই কিনুন",
+        "delete": "মুছে ফেলা",
+        "continue": "চালিয়ে যান",
+        "send": "পাঠান",
+        "register": "নিবন্ধন",
+        "login": "প্রবেশ করুন",
+        "signUp": "নিবন্ধন করুন"
+    },
+
+    "text" : {
+        "totalMrp": "মোট জনাব",
+        "deliveryFee": "ডেলিভারি করার টাকা",
+        "bagDiscount": "ব্যাগ ছাড়",
+        "subTotal": "সাবটোটাল",
+        "priceSummary": "মূল্য সংক্ষিপ্ত বিবরণ",
+        "cart": "কার্ট",
+        "wishlist": "ইচ্ছেতালিকা",
+        "total": "মোট",
+        "free": "বিনামূল্যে",
+        "sortBy": "ক্রমানুসার",
+        "emptyWishlist": "আপনার ইচ্ছা তালিকা বর্তমানে খালি!",
+        "emptyCart": "আপনার কার্ট বর্তমানে খালি!",
+        "filters": "ফিল্টার",
+        "clearAll": "সব পরিষ্কার করে দাও",
+        "range": "রেঞ্জ",
+        "getInTouch": "GET IN TOUCH",
+        "sendMessage": "SEND MESSAGE",
+        "registerHere": "Register Here",
+        "loginHere": "Login Here",
+        "deliveryDetail": "Delivery Detail"
+     },
+
+     "label" : {
+         "username": "Username",
+         "password": "Password",
+         "emailAddress": "Email Address",
+         "mobileNumber": "Mobile Number"
+
+     }
+}

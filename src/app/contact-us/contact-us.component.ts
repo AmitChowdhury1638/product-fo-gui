@@ -1,6 +1,8 @@
 import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { ConfigurationService } from '../services/configuration/configuration.service';
+import { MessengerService } from '../services/messenger.service';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -15,26 +17,61 @@ export class ContactUsComponent implements OnInit {
   mobile: any
   address: any
   contactUsEmail: any
+  code: string = "eng";
+  clickEventSubscription: Subscription | undefined;
+  language: string = "english";
   constructor(private productService: ProductService,
-               private configurationService: ConfigurationService) { }
+               private configurationService: ConfigurationService,
+               private msg: MessengerService) { }
 
   ngOnInit(): void {
-    this.configurationService.getConfigurationByKey("mobile number").subscribe((data)=>{
+    this.clickEventSubscription= this.msg.getLanguage().subscribe((language)=>{
+      this.language = language
+      if(this.language == "english")
+      this.code = "eng";
+      else if(this.language == "hindi")
+      this.code = "hin"
+      else if(this.language == "marathi")
+      this.code = "mar"
+      else if(this.language == "bangla")
+      this.code = "ben"
+
+      this.getMobileNumber()
+      this.getAddress()
+      this.getEmail()
+    })
+    
+
+     this.getMobileNumber()
+     this.getAddress()
+     this.getEmail()
+
+    
+
+  
+  }
+
+  getMobileNumber(){
+    this.configurationService.getConfigurationByKey("mobile number", this.code).subscribe((data)=>{
       this.mobile=data[0].value
       console.log(data)
     })
 
-    this.configurationService.getConfigurationByKey("address").subscribe((data)=>{
+  }
+
+  getAddress(){
+    this.configurationService.getConfigurationByKey("address", this.code).subscribe((data)=>{
       this.address=data[0].value
       console.log(data)
     })
 
-    this.configurationService.getConfigurationByKey("email").subscribe((data)=>{
+  }
+
+  getEmail(){
+    this.configurationService.getConfigurationByKey("email", this.code).subscribe((data)=>{
       this.contactUsEmail=data[0].value
       console.log(data)
     })
-
-  
   }
 
   onClick(){

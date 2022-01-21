@@ -27,6 +27,9 @@ export class ProductListComponent implements OnInit {
   code: string = "eng";
   language: string = "english";
   price: any[] = [];
+  map = new Map();
+  key: any
+
   constructor(private productService: ProductService,
               private msg: MessengerService,
               private localeTranslationService: LocaleTranslationService) {
@@ -41,6 +44,12 @@ export class ProductListComponent implements OnInit {
                }
  
   ngOnInit(): void {
+    
+    this.localeTranslationService.getLocaleTranslation().subscribe((data)=>{
+      data.forEach((item: {  key: string, localeCode: string, translation: string }) => {
+        this.map.set(item.key + "_" + item.localeCode, item.translation)
+      })
+    })
 
     this.clickEventSubscription= this.msg.getLanguage().subscribe((language)=>{
       this.language = language
@@ -82,12 +91,18 @@ export class ProductListComponent implements OnInit {
   getProducts(filter1: string, filter2: string, price: string, sort: string, language: string){
     this.productService.getProducts(filter1, filter2, price, sort, language).subscribe((products)=>{
       this.productList = products;
+
       this.productList.forEach((item: {  name: string }) => {
+         this.key = item.name + "_" + this.code
+         item.name = this.map.get(this.key)
+      })
+
+      /*this.productList.forEach((item: {  name: string }) => {
         this.localeTranslationService.getLocaleTranslationByKey(item.name, this.code).subscribe((data)=>{
           item.name = data.translation
         })
     }
-    )
+    )*/
   })
 }
 

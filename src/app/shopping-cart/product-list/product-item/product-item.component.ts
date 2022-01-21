@@ -10,6 +10,7 @@ import { SharedService } from 'src/app/services/shared.service';
 import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
 import { RegisterService } from 'src/app/services/register/register.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { isPlatformWorkerApp } from '@angular/common';
 
 @Component({
   selector: 'app-product-item',

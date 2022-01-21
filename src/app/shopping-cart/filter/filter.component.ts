@@ -8,6 +8,7 @@ import { ProductListComponent } from '../product-list/product-list.component';
 import {AccordionModule} from 'primeng/accordion';
 import { FilterService } from 'src/app/services/filter.service';
 import { ConfigurationService } from 'src/app/services/configuration/configuration.service';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 
 @Component({
@@ -33,6 +34,9 @@ export class FilterComponent implements OnInit {
   filter_2: any
   filter_3: any
   filter_4: any
+  code: string = "eng";
+  clickEventSubscription: Subscription | undefined;
+  language: string = "english";
 
   constructor(private filterService: FilterService,
               private route: ActivatedRoute,
@@ -40,6 +44,22 @@ export class FilterComponent implements OnInit {
               private configurationService: ConfigurationService) { }
 
   ngOnInit(): void {
+
+    this.clickEventSubscription= this.msg.getLanguage().subscribe((language)=>{
+      this.language = language
+      if(this.language == "english")
+      this.code = "eng";
+      else if(this.language == "hindi")
+      this.code = "hin"
+      else if(this.language == "marathi")
+      this.code = "mar"
+      else if(this.language == "bangla")
+      this.code = "ben"
+
+    this.getFilter1()
+    this.getFilter2()
+    this.getFilter3()
+    })
     this.filterService.getFilter1().subscribe((filter)=>{
       this.f1=filter;
     })
@@ -62,22 +82,38 @@ export class FilterComponent implements OnInit {
     })
     
    
-    this.configurationService.getConfigurationByKey("filter1").subscribe((data)=>{
+    this.getFilter1()
+    this.getFilter2()
+    this.getFilter3()
+  
+    
+
+    
+
+   
+  }
+
+  getFilter1(){
+    this.configurationService.getConfigurationByKey("filter1", this.code).subscribe((data)=>{
       this.filter_1=data[0].value
       console.log(data)
     })
-  
-    this.configurationService.getConfigurationByKey("filter2").subscribe((data)=>{
+
+  }
+
+  getFilter2(){
+    this.configurationService.getConfigurationByKey("filter2", this.code).subscribe((data)=>{
       this.filter_2=data[0].value
       console.log(data)
     })
+  }
 
-    this.configurationService.getConfigurationByKey("filter3").subscribe((data)=>{
+  getFilter3(){
+    this.configurationService.getConfigurationByKey("filter3", this.code).subscribe((data)=>{
       this.filter_3=data[0].value
       console.log(data)
     })
 
-   
   }
 
   onCheckboxChange(e: any){
