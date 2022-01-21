@@ -37,7 +37,6 @@ export class TopmenuComponent implements OnInit {
               }
 
   ngOnInit(): void {
-    
     this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
       console.log("pp")
       this.value = username
@@ -80,7 +79,9 @@ export class TopmenuComponent implements OnInit {
   }
 
   selectLang(lang: string){
+    console.log(lang)
     this.translateService.use(lang)
+    this.messengerService.sendLanguage(lang)
   }
 
   

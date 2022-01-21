@@ -4,6 +4,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { Subscription } from 'rxjs';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { LocaleTranslationService } from 'src/app/services/localetranslation/locale-translation.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
   
 
@@ -22,9 +24,12 @@ export class ProductListComponent implements OnInit {
   f1: any;
   f2: any;
   f3: any;
+  code: string = "eng";
+  language: string = "english";
   price: any[] = [];
   constructor(private productService: ProductService,
-              private msg: MessengerService) {
+              private msg: MessengerService,
+              private localeTranslationService: LocaleTranslationService) {
                 this.price = [
                   {name: 'Price: Low-High'},
                   {name: 'Price: High-Low'},
@@ -36,34 +41,55 @@ export class ProductListComponent implements OnInit {
                }
  
   ngOnInit(): void {
+
+    this.clickEventSubscription= this.msg.getLanguage().subscribe((language)=>{
+      this.language = language
+      if(this.language == "english")
+      this.code = "eng";
+      else if(this.language == "hindi")
+      this.code = "hin"
+      else if(this.language == "marathi")
+      this.code = "mar"
+      else if(this.language == "bangla")
+      this.code = "ben"
+      this.getProducts('', '', '', '', this.language);
+      
+    })
     
     this.clickEventSubscription= this.msg.getMsgEvent().subscribe(({filter1,filter2,price})=>{
       this.f1 = filter1
       this.f2 = filter2
       this.f3 = price
       console.log(this.sort)
-      this.getProducts(filter1,filter2,price,this.sort);
+      this.getProducts(filter1,filter2,price,this.sort,this.language);
      })
 
     this.clickEventSubscription= this.msg.getMsgSort().subscribe((s: any)=>{
       this.sort = s
       console.log(this.f1)
-      this.getProducts(this.f1, this.f2, this.f3,this.sort);                 
+      this.getProducts(this.f1, this.f2, this.f3, this.sort, this.language);                 
     })
+
+    
     
     
   
-    this.getProducts('','','','');
+    this.getProducts('', '', '', '', this.language);
     
 
   }
 
-  getProducts(filter1: string,filter2: string,price: string,sort: string){
-    this.productService.getProducts(filter1,filter2,price,sort).subscribe((products)=>{
+  getProducts(filter1: string, filter2: string, price: string, sort: string, language: string){
+    this.productService.getProducts(filter1, filter2, price, sort, language).subscribe((products)=>{
       this.productList = products;
+      this.productList.forEach((item: {  name: string }) => {
+        this.localeTranslationService.getLocaleTranslationByKey(item.name, this.code).subscribe((data)=>{
+          item.name = data.translation
+        })
     }
     )
-  }
+  })
+}
 
   
 

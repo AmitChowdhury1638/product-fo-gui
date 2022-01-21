@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { productsUrl, productsUrlType } from 'src/app/config/api';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Image } from '../models/image';
+import { MessengerService } from './messenger.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,24 @@ import { Image } from '../models/image';
 export class ProductService {
 
   baseApiUrl = "http://localhost:8080/uploadFile"
- 
+  
   products: Product[]=[];
+  language: any
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private messengerService: MessengerService) { 
+    
+  }
 
-  getProducts(t: string,p: string,pr: string,s: string): Observable<Product[]>{
+  getProducts(t: string, p: string, pr: string, s: string, language: string): Observable<Product[]>{
+    console.log(language)
     if(t=="" && p!="" && pr!="" && s==""){
     return this.http.get<Product[]>(productsUrl,{
       params:{
        // type: t,
         filter2: p,
-        price: pr
+        price: pr,
+        language: language
       }
     });
   }else if(p=="" && t!="" && pr!="" && s!=""){
@@ -31,7 +38,8 @@ export class ProductService {
         filter1: t,
        // purity: p,
         price: pr,
-        sort: s
+        sort: s,
+        language: language
       }
     });
   }else if(p!="" && t=="" && pr!="" && s!=""){
@@ -40,7 +48,8 @@ export class ProductService {
         filter2: p,
        // purity: p,
         price: pr,
-        sort: s
+        sort: s,
+        language: language
       }
     });
   }else if(t!="" && p=="" && pr!="" && s==""){
@@ -48,7 +57,8 @@ export class ProductService {
       params:{
        // type: t,
         filter1: t,
-        price: pr
+        price: pr,
+        language: language
       }
     });
   }else if(p=="" && t=="" && pr!=""){
@@ -56,7 +66,8 @@ export class ProductService {
       params:{
       //  type: t,
        // purity: p,
-        price: pr
+        price: pr,
+        language: language
       }
     });
   }else{
@@ -65,7 +76,8 @@ export class ProductService {
         filter1: t,
         filter2: p,
         price: pr,
-        sort: s
+        sort: s,
+        language: language
       }
     });
   }
