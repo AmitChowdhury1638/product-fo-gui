@@ -34,18 +34,18 @@
         "filters": "ফিল্টার",
         "clearAll": "সব পরিষ্কার করে দাও",
         "range": "রেঞ্জ",
-        "getInTouch": "GET IN TOUCH",
-        "sendMessage": "SEND MESSAGE",
-        "registerHere": "Register Here",
-        "loginHere": "Login Here",
-        "deliveryDetail": "Delivery Detail"
+        "getInTouch": "যোগাযোগ করুন",
+        "sendMessage": "বার্তা পাঠান",
+        "registerHere": "এখানে নিবন্ধন করুন",
+        "loginHere": "এখানে লগইন করুন",
+        "deliveryDetail": "সরবরাহের বিস্তারিত"
      },
 
      "label" : {
-         "username": "Username",
-         "password": "Password",
-         "emailAddress": "Email Address",
-         "mobileNumber": "Mobile Number"
+         "username": "ব্যবহারকারীর নাম",
+         "password": "পাসওয়ার্ড",
+         "emailAddress": "ইমেইল ঠিকানা",
+         "mobileNumber": "মোবাইল নম্বর"
 
      }
 }
