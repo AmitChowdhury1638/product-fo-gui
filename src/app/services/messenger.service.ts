@@ -6,11 +6,12 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class MessengerService {
-  subject = new Subject()
-  subject1 = new Subject()
-  subject2 = new Subject()
-  subject3 = new Subject()
-  subject4 = new Subject()
+  subject = new Subject();
+  subject1 = new Subject();
+  subject2 = new Subject();
+  subject3 = new Subject();
+  subject4 = new Subject<any>();
+  subject5 = new Subject();
 
 
   constructor() { }
@@ -50,10 +51,21 @@ export class MessengerService {
   }
 
   sendLanguage(language: String){
+    
     this.subject4.next(language);
   }
 
-  getLanguage():Observable<any>{
+  getLanguage(){
+    console.log("language")
     return this.subject4.asObservable()
   }
+
+  sendLoginValue(value: boolean){
+    this.subject5.next(value);
+  }
+
+  getLoginValue():Observable<any>{
+    return this.subject5.asObservable()
+  }
+  
 }

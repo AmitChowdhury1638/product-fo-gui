@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { LocaleTranslationService } from 'src/app/services/localetranslation/locale-translation.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 
   
 
@@ -17,6 +17,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class ProductListComponent implements OnInit {
 
   clickEventSubscription: Subscription | undefined;
+  clickEventSubscription1: Subscription | undefined;
+  subscription!: Subscription;
   sortedValues: string = '';
   productList: Product[] = [];
   sort: string='';
@@ -24,34 +26,34 @@ export class ProductListComponent implements OnInit {
   f1: any;
   f2: any;
   f3: any;
-  code: string = "eng";
+  code: string = "hin";
   language: string = "english";
   price: any[] = [];
   map = new Map();
   key: any
 
   constructor(private productService: ProductService,
-              private msg: MessengerService,
+              private messengerService: MessengerService,
               private localeTranslationService: LocaleTranslationService) {
                 this.price = [
                   {name: 'Price: Low-High'},
                   {name: 'Price: High-Low'},
-                 
-              ];
-              console.log(this.sortedValues)
-
+                ];
+                
+              
                 
                }
  
   ngOnInit(): void {
     
+
     this.localeTranslationService.getLocaleTranslation().subscribe((data)=>{
       data.forEach((item: {  key: string, localeCode: string, translation: string }) => {
         this.map.set(item.key + "_" + item.localeCode, item.translation)
       })
     })
 
-    this.clickEventSubscription= this.msg.getLanguage().subscribe((language)=>{
+    this.subscription = this.messengerService.getLanguage().subscribe(({language})=>{
       this.language = language
       if(this.language == "english")
       this.code = "eng";
@@ -61,39 +63,50 @@ export class ProductListComponent implements OnInit {
       this.code = "mar"
       else if(this.language == "bangla")
       this.code = "ben"
-      this.getProducts('', '', '', '', this.language);
+      console.log(this.language)
+      this.getProducts('', '', '', '');
       
-    })
+    });
+
     
-    this.clickEventSubscription= this.msg.getMsgEvent().subscribe(({filter1,filter2,price})=>{
+    
+    this.clickEventSubscription = this.messengerService.getMsgEvent().subscribe(({filter1,filter2,price})=>{
       this.f1 = filter1
       this.f2 = filter2
       this.f3 = price
       console.log(this.sort)
-      this.getProducts(filter1,filter2,price,this.sort,this.language);
+      this.getProducts(filter1,filter2,price,this.sort);
      })
 
-    this.clickEventSubscription= this.msg.getMsgSort().subscribe((s: any)=>{
+    this.clickEventSubscription= this.messengerService.getMsgSort().subscribe((s: any)=>{
       this.sort = s
       console.log(this.f1)
-      this.getProducts(this.f1, this.f2, this.f3, this.sort, this.language);                 
+      //this.code = "eng" 
+      this.getProducts(this.f1, this.f2, this.f3, this.sort);
+                      
     })
 
     
     
     
   
-    this.getProducts('', '', '', '', this.language);
+    this.getProducts('', '', '', '');
     
 
   }
 
-  getProducts(filter1: string, filter2: string, price: string, sort: string, language: string){
-    this.productService.getProducts(filter1, filter2, price, sort, language).subscribe((products)=>{
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+}
+
+  getProducts(filter1: string, filter2: string, price: string, sort: string){
+    this.productService.getProducts(filter1, filter2, price, sort).subscribe((products)=>{
       this.productList = products;
 
       this.productList.forEach((item: {  name: string }) => {
          this.key = item.name + "_" + this.code
+         console.log(this.key)
          item.name = this.map.get(this.key)
       })
 
@@ -120,7 +133,7 @@ export class ProductListComponent implements OnInit {
 
     } else{
     console.log(this.f1)
-    this.msg.sendMsgSort("low")
+    this.messengerService.sendMsgSort("low")
     }
 }
 
@@ -136,7 +149,7 @@ getSortedProductsDesc(){
   // }
 
   } else{
-  this.msg.sendMsgSort("high")
+  this.messengerService.sendMsgSort("high")
   }
    /* if(this.sortedValues.length>0){
     this.productService.getSortedProductsByDesc().subscribe((products)=>{

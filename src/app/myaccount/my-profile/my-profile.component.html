@@ -1,46 +1,48 @@
-<div class="row">.</div>
+<!-- <div class="websiteMyacTitle">
+    <div>My Profile</div>
+    <hr>
+</div> -->
+<div class="row"></div>
 <div class="row">
     <div class="col-md-4 offset-md-4">
       <div class="guest-form-card card">
    
         <div class="card-header text-center">
-          <h2>{{'text.registerHere' | translate}}</h2>
+          <h2>My Profile</h2>
         </div>
    
         <div class="card-body">
           <form [formGroup]="userDetailForm" (ngSubmit)="onSubmit()" >
             <div class="form-group">
               <label for="username">{{'label.username' | translate}}</label>
-              <input type=text formControlName="username" class="form-control" />
+              <input type=text formControlName="username" class="form-control" [(ngModel)]="data.username" value={{data.username}}>
             </div>
             
 
             <div class="form-group">
               <label for="email">{{'label.emailAddress' | translate}}</label>
-              <input type="email" formControlName="emailId"  class="form-control" />
+              <input type="email" formControlName="emailId"  class="form-control" [(ngModel)]="data.emailId" value={{data.emailId}} />
             </div>
 
           <div class="form-group">
             <label for="mobile">{{'label.mobileNumber' | translate}}</label>
-            <input id="mobile" formControlName="mobileNumber" class="form-control" />
+            <input id="mobile" formControlName="mobileNumber" class="form-control" [(ngModel)]="data.mobileNumber"  value={{data.mobileNumber}}/>
           </div>
  
           <div class="form-group">
             <label for="password">{{'label.password' | translate}}</label>
-            <input type="password"  formControlName="password" id="password" name="password" class="form-control" ng-required=true /> 
-          </div>
-          
-          <div class="form-group">
-            <label for="language">Language</label>
-            <input type=text  formControlName="language" id="language" name="language" class="form-control" ng-required=true /> 
-          </div>
-
             <div>
-              <button class="pmts-btn">{{'button.register' | translate}}</button>
+            <input type="password"  formControlName="password" id="password" name="password" class="form-control" ng-required=true  [(ngModel)]="data.password" value={{data.password}}/>
+            </div> 
+            
+          </div>
+    
+            <div>
+              <button class="pmts-btn">SAVE</button>
             </div>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <div class="row"></div>
+  <div class="row">.</div>

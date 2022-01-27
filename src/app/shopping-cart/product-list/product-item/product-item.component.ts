@@ -26,7 +26,7 @@ export class ProductItemComponent implements OnInit {
   filter: any[]=[];
   cartItems: any = [];
   cartArray: any = [];
-  value: string = "";
+  value: string = "ADD TO CART";
   constructor(
     private msg: MessengerService,
     private productService: ProductService,
@@ -38,23 +38,7 @@ export class ProductItemComponent implements OnInit {
      }
 
     ngOnInit(): void {
-      console.log(this.productItem)
-      this.registerService.getUserDetailById(1).subscribe((data)=>{
-        this.cartItems = data
-        this.cartArray = this.cartItems.cartIds.split(',');
-        console.log(this.cartArray)
-        this.cartArray.forEach((item: any) => {
-          
-          for(let i in this.productItem){
-           
-            if(item.id == this.productItem.id ){
-              this.value = "GO TO CART"
-            }
-          }
-    
-         })
-      })
-    
+   
     
 }
   handleAddToCart(product: any){
@@ -63,11 +47,9 @@ export class ProductItemComponent implements OnInit {
  }
 
   addtocart(product: any){
-    //this.msg.sendMsg(this.productItem)
-    
+    console.log(product)
     this.sharedService.addtoCart(product);
-   
-}
+  }
 
    handleAddToWishlist(item: any) {
      this.addedToWishlist = true;

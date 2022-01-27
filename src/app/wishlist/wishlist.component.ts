@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { LocaleTranslationService } from '../services/localetranslation/locale-translation.service';
 import { MessengerService } from '../services/messenger.service';
+import { ProductService } from '../services/product.service';
 import { SharedService } from '../services/shared.service';
 import { WishlistService } from '../services/wishlist/wishlist.service';
 
@@ -21,7 +22,8 @@ export class WishlistComponent implements OnInit {
   constructor(private wishlistService: WishlistService,
               private sharedService: SharedService,
               private messengerService: MessengerService,
-              private localeTranslationService: LocaleTranslationService) {
+              private localeTranslationService: LocaleTranslationService,
+              private productService: ProductService) {
                
                }
 
@@ -32,6 +34,8 @@ export class WishlistComponent implements OnInit {
         this.map.set(item.key + "_" + item.localeCode, item.translation)
       })
     })
+
+    console.log(this.map)
 
     this.clickEventSubscription= this.messengerService.getLanguage().subscribe((language)=>{
       console.log(language)
@@ -48,20 +52,25 @@ export class WishlistComponent implements OnInit {
     })
   
     this.getProducts()
-
-       
-     
-    
   }
 
   getProducts(){
     this.wishlistService.getProducts().subscribe(res=>{
-      console.log(res)
       this.wishlistItems = res;
+    
+      // this.wishlistItems.forEach((item: {  id: any, name: any}) => {
+      //   this.productService.getById(item.id).subscribe((data)=>{
+      //     console.log(data[0].name)
+      //     item.name = data[0].name
+      //     console.log(item.name)
+      //   })
 
-    this.wishlistItems.forEach((item: {  description: string }) => {
-         this.key = item.description + "_" + this.code
-         item.description = this.map.get(this.key)
+      // })
+    this.wishlistItems.forEach((item: {  description: any}) => {
+         
+         //this.key = item.name + "_" + this.code;
+         item.description = "diamond_rings_hin"
+         console.log(this.key)
       })
     })
     

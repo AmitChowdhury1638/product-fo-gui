@@ -48,7 +48,11 @@ import {DropdownModule} from 'primeng/dropdown';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { TranslateModule, TranslateLoader  } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader'; 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MyaccountComponent } from './myaccount/myaccount.component';
+import { ChangeLanguageComponent } from './myaccount/change-language/change-language.component';
+import { MyProfileComponent } from './myaccount/my-profile/my-profile.component';
+import { MyordersComponent } from './myaccount/myorders/myorders.component'; 
 
 @NgModule({
   declarations: [
@@ -77,7 +81,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     ProductViewComponent,
     CartFinalComponent,
     WishlistComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MyaccountComponent,
+    ChangeLanguageComponent,
+    MyProfileComponent,
+    MyordersComponent
   ],
   imports: [
     ReactiveFormsModule,

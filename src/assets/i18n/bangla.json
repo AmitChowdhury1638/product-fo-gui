@@ -38,7 +38,8 @@
         "sendMessage": "বার্তা পাঠান",
         "registerHere": "এখানে নিবন্ধন করুন",
         "loginHere": "এখানে লগইন করুন",
-        "deliveryDetail": "সরবরাহের বিস্তারিত"
+        "deliveryDetail": "সরবরাহের বিস্তারিত",
+        "availability": "উপস্থিতি"
      },
 
      "label" : {
@@ -47,5 +48,11 @@
          "emailAddress": "ইমেইল ঠিকানা",
          "mobileNumber": "মোবাইল নম্বর"
 
+     },
+
+     "placeholder" : {
+         "name": "নাম",
+         "email": "ইমেইল",
+         "message": "বার্তা"
      }
 }

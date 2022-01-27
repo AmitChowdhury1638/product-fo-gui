@@ -38,8 +38,8 @@ export class RegisterService {
   }
 
   editUserDetail(data: any) {
-    console.log("in put")
-    return this.http.put('http://localhost:8080/userDetail'+'/'+data.id, data);
+    console.log(data)
+    return this.http.put('http://localhost:8080/userDetail/2', data);
   }
 
   editCartId(cartId: any,username: any):  Observable<any>{

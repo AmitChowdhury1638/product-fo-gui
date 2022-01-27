@@ -28,9 +28,28 @@
       <span style="color: rgba(255,255,255,.5);">{{value}}</span>
     </div>
    
-    <a class="nav-link"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="show()">
-      <span style="color: rgba(255,255,255,.5);">{{login}}</span>
+    <a *ngIf="login1" class="nav-link"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="show()">
+      <span style="color: rgba(255,255,255,.5);">LOGIN</span>
     </a>
+    
+    <!-- <a *ngIf="!login1"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="show()">
+      <span style="color: rgba(255,255,255,.5);">LOGOUT</span>
+    </a>   -->
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a *ngIf="!login1" class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i *ngIf="!login1" class="fas fa-user-alt"  ></i> 
+        </a>
+        <ul class="dropdown-menu">
+          <li>Hii {{value}}</li>
+          <li><a href="/myaccount">My Account</a></li>
+          <li><a href="#">My Orders</a></li>
+          <li><a href="#">LOGOUT</a></li>
+        </ul>
+
+      </li>
+    </ul>
+    
 
     <button routerLink="wishlist" class="btn btn-custom btn-sm">
       <i style="font-size: 30px;" class="pi pi-heart"></i>
@@ -42,12 +61,12 @@
       <div style="font-size: 10px;" class="badge bg-primary">{{totalCartItem}}</div> 
      </button> 
       
-     <p>
+      <!-- <p>
        Select Language:
        <select (click)="selectLang($any($event.target).value)">
          <option *ngFor="let item of supportLanguages">{{item}}</option>
        </select>
-     </p>
+     </p>  -->
 
     
   </div>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { MessengerService } from '../services/messenger.service';
+import { RegisterService } from '../services/register/register.service';
 import { SharedService } from '../services/shared.service';
 import { WishlistService } from '../services/wishlist/wishlist.service';
 //import  top from '../../assets/i18n/en.json';
@@ -21,22 +22,48 @@ export class TopmenuComponent implements OnInit {
   clickEventSubscription: Subscription | undefined;
   value: string = " "
   login: string = "LOGIN"
+  login1: boolean= true
   supportLanguages = ['english', 'bangla', 'marathi', 'hindi'];
+  language: any = "english"
   
 
   constructor(private sharedService: SharedService,
               private wishlistService: WishlistService,
               private messengerService: MessengerService,
               private router: Router,
-              private translateService: TranslateService) { 
-                this.translateService.addLangs(this.supportLanguages);
-                this.translateService.setDefaultLang('english');
+              private translateService: TranslateService,
+              private registerService: RegisterService) {
+                this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
+                  this.value = username 
+                  this.registerService.getUserDetailByUsername(this.value).subscribe((data)=>{
+                    this.language = data.language
+                    this.translateService.setDefaultLang(this.language);
+                  })
+
+                })
+                //this.language = "marathi"
+                //this.translateService.addLangs(this.supportLanguages);
+                this.translateService.setDefaultLang(this.language);
+                console.log(this.language)
+              
 
                 //const browserlang = this.translateService.getBrowserLang();
                 //this.translateService.use(browserlang);
               }
 
   ngOnInit(): void {
+    
+    this.clickEventSubscription= this.messengerService.getLanguage().subscribe((language)=>{
+      console.log(language)
+      this.login1 = false
+       
+    })
+
+    this.clickEventSubscription= this.messengerService.getLoginValue().subscribe((value)=>{
+      this.login1 = value
+       
+    })
+
     this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
       console.log("pp")
       this.value = username
@@ -49,7 +76,8 @@ export class TopmenuComponent implements OnInit {
     .subscribe(res=>{
       this.totalWishlistItem = res.length;
     })
-    this.login = "LOGOUT"
+    //this.login = "LOGOUT"
+    this.login1 = false
     })
     this.sharedService.getProducts()
     .subscribe(res=>{
@@ -64,18 +92,8 @@ export class TopmenuComponent implements OnInit {
   }
 
   show(){
-    if(this.login == "LOGIN"){
     this.router.navigateByUrl("/login")
-    
-    }
-    else {
-      this.messengerService.sendLogin("")
-      this.login = "LOGIN"
-
-      this.totalCartItem = 0
-      this.totalWishlistItem = 0
-    }
-    
+    //this.messengerService.sendLogin("")
   }
 
   selectLang(lang: string){
@@ -83,7 +101,4 @@ export class TopmenuComponent implements OnInit {
     this.translateService.use(lang)
     this.messengerService.sendLanguage(lang)
   }
-
-  
-
 }

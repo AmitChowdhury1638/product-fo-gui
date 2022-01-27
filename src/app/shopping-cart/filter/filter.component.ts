@@ -2,13 +2,14 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
-import { MessengerService } from 'src/app/services/messenger.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductListComponent } from '../product-list/product-list.component';
 import {AccordionModule} from 'primeng/accordion';
 import { FilterService } from 'src/app/services/filter.service';
 import { ConfigurationService } from 'src/app/services/configuration/configuration.service';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { Subscription } from 'rxjs';
+import { MessengerService } from 'src/app/services/messenger.service';
+
 
 
 @Component({
@@ -36,30 +37,37 @@ export class FilterComponent implements OnInit {
   filter_4: any
   code: string = "eng";
   clickEventSubscription: Subscription | undefined;
-  language: string = "english";
+  //language: string = "english";
 
   constructor(private filterService: FilterService,
               private route: ActivatedRoute,
               private msg: MessengerService,
-              private configurationService: ConfigurationService) { }
+              private configurationService: ConfigurationService) { 
+                
+                /*this.clickEventSubscription= this.msg.getLanguage().subscribe((language)=>{
+                  console.log("chv")
+                  this.language = language
+                  if(this.language == "english")
+                  this.code = "eng";
+                  else if(this.language == "hindi")
+                  this.code = "hin"
+                  else if(this.language == "marathi")
+                  this.code = "mar"
+                  else if(this.language == "bangla")
+                  this.code = "ben"
+                 console.log(this.code)
+                this.getFilter1()
+                this.getFilter2()
+                this.getFilter3()
+                })*/
+              }
 
   ngOnInit(): void {
-
-    this.clickEventSubscription= this.msg.getLanguage().subscribe((language)=>{
-      this.language = language
-      if(this.language == "english")
-      this.code = "eng";
-      else if(this.language == "hindi")
-      this.code = "hin"
-      else if(this.language == "marathi")
-      this.code = "mar"
-      else if(this.language == "bangla")
-      this.code = "ben"
-
-    this.getFilter1()
-    this.getFilter2()
-    this.getFilter3()
+    this.clickEventSubscription= this.msg.getLanguage().subscribe((language: string)=>{
+      console.log(language)
     })
+
+    
     this.filterService.getFilter1().subscribe((filter)=>{
       this.f1=filter;
     })

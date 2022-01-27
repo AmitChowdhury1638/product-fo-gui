@@ -39,7 +39,8 @@
         "sendMessage": "मेसेज भेजें",
         "registerHere": "यहां रजिस्टर करें",
         "loginHere": "यहां लॉगिन करें",
-        "deliveryDetail": "पहुचने का विवरण"
+        "deliveryDetail": "पहुचने का विवरण",
+        "availability": "उपलब्धता"
 
     },
 
@@ -49,5 +50,11 @@
         "emailAddress": "ईमेल",
         "mobileNumber": "मोबाइल नंबर"
 
+    },
+
+    "placeholder" : {
+        "name": "नाम",
+        "email": "ईमेल",
+        "message": "संदेश"
     }
 }

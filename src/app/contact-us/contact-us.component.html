@@ -33,15 +33,15 @@
             </div>
             <div class="row">
                 <div class="col-6 col-md-6">
-                    <input type="text" pInputText placeholder="Name" [(ngModel)] = "name">
+                    <input type="text" pInputText placeholder="{{'placeholder.name' | translate}}" [(ngModel)] = "name">
                 </div>
                 <div class="col-6 col-md-6">
-                    <input type="text" pInputText placeholder="Email" name="toEmail" [(ngModel)] = "email">
+                    <input type="text" pInputText placeholder="{{'placeholder.email' | translate}}" name="toEmail" [(ngModel)] = "email">
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 col-md-12">
-                    <textarea pInputTextarea placeholder="MESSAGE" cols="51" [(ngModel)] = "message" ></textarea>
+                    <textarea pInputTextarea placeholder="{{'placeholder.message' | translate}}" cols="51" [(ngModel)] = "message" ></textarea>
                 </div>
             </div>
             <div class="row">

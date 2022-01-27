@@ -1,0 +1,24 @@
+.websiteMyacTitle {
+    float: left;
+    width: 100%;
+    font-family: montserrat-bold, sans-serif;
+    font-size: 2em;
+    color: rgb(24, 24, 24);
+}
+
+.accOptionsInner {
+    width: 100%;
+    margin: 0;
+    float: none;
+    border-bottom: 0.5px solid rgba(0,0,0,.2);
+}
+
+.myaccBox .accOptions {
+    display: block;
+    padding: 20px 0px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+}
+

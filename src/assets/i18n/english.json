@@ -38,7 +38,8 @@
         "sendMessage": "SEND MESSAGE",
         "registerHere": "Register Here",
         "loginHere": "Login Here",
-        "deliveryDetail": "Delivery Detail"
+        "deliveryDetail": "Delivery Detail",
+        "availability": "Availability"
      },
 
      "label" : {
@@ -47,5 +48,11 @@
          "emailAddress": "Email Address",
          "mobileNumber": "Mobile Number"
 
+     },
+
+     "placeholder" : {
+         "name": "Name",
+         "email": "Email",
+         "message": "Message"
      }
 }

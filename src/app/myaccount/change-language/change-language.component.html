@@ -1,0 +1,6 @@
+<p>
+    Select Language:
+    <select (click)="selectLang($any($event.target).value)">
+      <option *ngFor="let item of supportLanguages">{{item}}</option>
+    </select>
+  </p>

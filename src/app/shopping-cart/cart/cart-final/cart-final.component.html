@@ -10,7 +10,7 @@
                             <div class="col-9 col-md-10">
                                 <div>{{item.name}}</div>
                                 <div class="price">{{item.price | currency:'INR' }}</div>
-                                <div class="quantityInStock"><span style="font-size: 14px;font-weight: 300;">Availability: </span><span style="color:#5be05b;font-weight: 600;">{{quantity}} in stock </span></div>
+                                <div class="quantityInStock"><span style="font-size: 14px;font-weight: 300;">{{'text.availability' | translate}}: </span><span style="color:#5be05b;font-weight: 600;">{{quantity}} in stock </span></div>
                                 <div class="increment">
                                     <button (click)="decrement(item)">
                                         <i class="fa fa-minus"  ></i>

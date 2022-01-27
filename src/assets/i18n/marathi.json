@@ -38,7 +38,8 @@
         "sendMessage": "संदेश पाठवा",
         "registerHere": "येथे नोंदणी करा",
         "loginHere": "येथे लॉगिन करा",
-        "deliveryDetail": "वितरण तपशील"
+        "deliveryDetail": "वितरण तपशील",
+        "availability": "उपलब्धता"
      },
 
      "label" : {
@@ -47,5 +48,11 @@
          "emailAddress": "ईमेल पत्ता",
          "mobileNumber": "मोबाईल नंबर"
 
+     },
+
+     "placeholder" : {
+         "name": "नाव",
+         "email": "ईमेल",
+         "message": "संदेश"
      }
 }
