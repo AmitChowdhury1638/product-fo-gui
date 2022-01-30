@@ -46,6 +46,13 @@ export class ProductService {
                   })
                   
                 })
+
+                this.clickEventSubscription= this.messengerService.getLanguage().subscribe((language)=>{
+                  this.language = language
+                    this.code = this.map.get(this.language)
+                    console.log(this.code)
+                    this.messengerService.sendProducts();
+              })
     
   }
 

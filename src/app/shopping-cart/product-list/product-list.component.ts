@@ -50,6 +50,8 @@ export class ProductListComponent implements OnInit {
     this.getProducts("","","","");
   })
 
+  
+
     this.localeService.getLocale().subscribe((data)=>{
     data.forEach((item: {  language: string, code: string }) => {
         this.map.set(item.language, item.code)
