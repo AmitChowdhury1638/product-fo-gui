@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { LoginComponent } from './login/login/login.component';
 import { ChangeLanguageComponent } from './myaccount/change-language/change-language.component';
-import { MyProfileComponent } from './myaccount/my-profile/my-profile.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ProductViewComponent } from './product-view/product-view.component';

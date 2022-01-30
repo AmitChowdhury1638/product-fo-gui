@@ -1,13 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+import { MessengerService } from '../messenger.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
 
-  constructor(private http: HttpClient) { }
+  clickEventSubscription: Subscription | undefined;
+  username: any
+
+  constructor(private http: HttpClient,
+              private messengerService: MessengerService) {
+    this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
+      this.username = username
+      console.log(this.username)
+      
+    })
+   }
 
   getUserDetail(): Observable<any> {
     return this.http.get('http://localhost:8080/userDetail')

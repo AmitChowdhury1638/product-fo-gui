@@ -67,5 +67,13 @@ export class MessengerService {
   getLoginValue():Observable<any>{
     return this.subject5.asObservable()
   }
+
+  sendProducts(){
+    this.subject5.next();
+  }
+
+  getProducts():Observable<any>{
+    return this.subject5.asObservable()
+  }
   
 }

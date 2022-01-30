@@ -4,7 +4,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { Subscription } from 'rxjs';
 import { MessengerService } from 'src/app/services/messenger.service';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { LocaleTranslationService } from 'src/app/services/localetranslation/locale-translation.service';
+import { LocaleService } from 'src/app/services/locale/locale.service';
+import { RegisterService } from 'src/app/services/register/register.service';
 
 
   
@@ -26,50 +27,36 @@ export class ProductListComponent implements OnInit {
   f1: any;
   f2: any;
   f3: any;
-  code: string = "hin";
-  language: string = "english";
+  code: string = "eng";
+  language: any = "hin";
   price: any[] = [];
   map = new Map();
   key: any
 
   constructor(private productService: ProductService,
               private messengerService: MessengerService,
-              private localeTranslationService: LocaleTranslationService) {
+              private localeService: LocaleService,
+              private registerService: RegisterService) {
                 this.price = [
                   {name: 'Price: Low-High'},
                   {name: 'Price: High-Low'},
                 ];
                 
-              
-                
                }
  
   ngOnInit(): void {
-    
+    this.clickEventSubscription= this.messengerService.getProducts().subscribe(()=>{
+      console.log("jkl")
+    this.getProducts("","","","");
+  })
 
-    this.localeTranslationService.getLocaleTranslation().subscribe((data)=>{
-      data.forEach((item: {  key: string, localeCode: string, translation: string }) => {
-        this.map.set(item.key + "_" + item.localeCode, item.translation)
+    this.localeService.getLocale().subscribe((data)=>{
+    data.forEach((item: {  language: string, code: string }) => {
+        this.map.set(item.language, item.code)
       })
     })
 
-    this.subscription = this.messengerService.getLanguage().subscribe(({language})=>{
-      this.language = language
-      if(this.language == "english")
-      this.code = "eng";
-      else if(this.language == "hindi")
-      this.code = "hin"
-      else if(this.language == "marathi")
-      this.code = "mar"
-      else if(this.language == "bangla")
-      this.code = "ben"
-      console.log(this.language)
-      this.getProducts('', '', '', '');
       
-    });
-
-    
-    
     this.clickEventSubscription = this.messengerService.getMsgEvent().subscribe(({filter1,filter2,price})=>{
       this.f1 = filter1
       this.f2 = filter2
@@ -85,14 +72,7 @@ export class ProductListComponent implements OnInit {
       this.getProducts(this.f1, this.f2, this.f3, this.sort);
                       
     })
-
-    
-    
-    
-  
     this.getProducts('', '', '', '');
-    
-
   }
 
   ngOnDestroy() {
@@ -103,23 +83,8 @@ export class ProductListComponent implements OnInit {
   getProducts(filter1: string, filter2: string, price: string, sort: string){
     this.productService.getProducts(filter1, filter2, price, sort).subscribe((products)=>{
       this.productList = products;
-
-      this.productList.forEach((item: {  name: string }) => {
-         this.key = item.name + "_" + this.code
-         console.log(this.key)
-         item.name = this.map.get(this.key)
-      })
-
-      /*this.productList.forEach((item: {  name: string }) => {
-        this.localeTranslationService.getLocaleTranslationByKey(item.name, this.code).subscribe((data)=>{
-          item.name = data.translation
-        })
-    }
-    )*/
   })
 }
-
-  
 
   getSortedProductsAsc(){
     if(this.f1 == undefined){

@@ -34,7 +34,14 @@ export class TopmenuComponent implements OnInit {
               private translateService: TranslateService,
               private registerService: RegisterService) {
                 this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
-                  this.value = username 
+                  this.value = username
+                  this.sharedService.getProducts().subscribe(res=>{
+                    this.totalCartItem = res.length;
+                  })
+                  this.wishlistService.getProducts().subscribe(res=>{
+                    this.totalWishlistItem = res.length;
+                  })
+                  this.login1 = false
                   this.registerService.getUserDetailByUsername(this.value).subscribe((data)=>{
                     this.language = data.language
                     this.translateService.setDefaultLang(this.language);
@@ -44,9 +51,6 @@ export class TopmenuComponent implements OnInit {
                 //this.language = "marathi"
                 //this.translateService.addLangs(this.supportLanguages);
                 this.translateService.setDefaultLang(this.language);
-                console.log(this.language)
-              
-
                 //const browserlang = this.translateService.getBrowserLang();
                 //this.translateService.use(browserlang);
               }
@@ -64,21 +68,10 @@ export class TopmenuComponent implements OnInit {
        
     })
 
-    this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
-      console.log("pp")
-      this.value = username
-      this.sharedService.getProducts()
-    .subscribe(res=>{
-      this.totalCartItem = res.length;
-    })
-    console.log(this.value)
-    this.wishlistService.getProducts()
-    .subscribe(res=>{
-      this.totalWishlistItem = res.length;
-    })
-    //this.login = "LOGOUT"
-    this.login1 = false
-    })
+    // this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
+    //   console.log("pp")
+      
+    // })
     this.sharedService.getProducts()
     .subscribe(res=>{
       this.totalCartItem = res.length;

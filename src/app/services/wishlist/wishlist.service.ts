@@ -41,12 +41,9 @@ export class WishlistService {
           console.log(this.res)
           if(this.res.id == ""){
             console.log("wrong")
-          
           } else{
             this.addtoWishlist(this.res)
-
           }
-          console.log("sanu")
         })
       }
     

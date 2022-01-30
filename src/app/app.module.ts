@@ -51,7 +51,7 @@ import { TranslateModule, TranslateLoader  } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { ChangeLanguageComponent } from './myaccount/change-language/change-language.component';
-import { MyProfileComponent } from './myaccount/my-profile/my-profile.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 import { MyordersComponent } from './myaccount/myorders/myorders.component'; 
 
 @NgModule({

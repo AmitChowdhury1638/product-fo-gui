@@ -15,6 +15,7 @@ export class MyProfileComponent implements OnInit {
   value: string =  ""
   data: any
   id: any
+  supportLanguages = ['english', 'bangla', 'marathi', 'hindi'];
 
   constructor(private messengerService: MessengerService,
               private registerService: RegisterService) { }
@@ -22,10 +23,12 @@ export class MyProfileComponent implements OnInit {
   ngOnInit(): void {
     this.clickEventSubscription= this.messengerService.getLogin().subscribe((user)=>{
       this.value = user
-      console.log("fhjy")
+      console.log("success")
+     
    })
+   this.getUserDetail()
 
-    this.getUserDetail()
+    
     
     this.userDetailForm = new FormGroup({
       username: new FormControl('',  Validators.required),
@@ -33,6 +36,7 @@ export class MyProfileComponent implements OnInit {
       emailId: new FormControl(''),
       password: new FormControl('',Validators.required),
       mobileNumber: new FormControl(''),
+      language: new FormControl(''),
       //id: new FormControl(this.id)
   });
     
@@ -40,7 +44,7 @@ export class MyProfileComponent implements OnInit {
 }
 
   getUserDetail(){
-    this.registerService.getUserDetailByUsername("anushka").subscribe((data)=>{
+    this.registerService.getUserDetailByUsername(this.value).subscribe((data)=>{
       this.data = data
       this.id = data.id
       console.log(this.data)

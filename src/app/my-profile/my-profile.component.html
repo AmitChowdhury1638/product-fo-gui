@@ -36,6 +36,13 @@
             </div> 
             
           </div>
+
+          <p>
+            Select Language:
+            <select formControlName="language" class="form-control" [(ngModel)]="data.language"  value={{data.language}}>
+              <option *ngFor="let item of supportLanguages">{{item}}</option>
+            </select>
+          </p>
     
             <div>
               <button class="pmts-btn">SAVE</button>

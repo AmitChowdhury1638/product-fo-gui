@@ -5,6 +5,8 @@ import { productsUrl, productsUrlType } from 'src/app/config/api';
 import { Observable, Subscription } from 'rxjs';
 import { Image } from '../models/image';
 import { MessengerService } from './messenger.service';
+import { RegisterService } from './register/register.service';
+import { LocaleService } from './locale/locale.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +14,50 @@ import { MessengerService } from './messenger.service';
 export class ProductService {
 
   baseApiUrl = "http://localhost:8080/uploadFile"
+  clickEventSubscription: Subscription | undefined;
+  username: any
   
   products: Product[]=[];
-  language: any
+  language: any 
+  code: any = "eng"
+  map = new Map();
 
   constructor(private http: HttpClient,
-              private messengerService: MessengerService) { 
+              private messengerService: MessengerService,
+              private registerService: RegisterService,
+              private localeService: LocaleService) { 
+
+                this.localeService.getLocale().subscribe((data)=>{
+                  data.forEach((item: {  language: string, code: string }) => {
+                      this.map.set(item.language, item.code)
+                    })
+                  })
+
+                this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
+                  this.username = username
+                  console.log(this.username)
+                  this.registerService.getUserDetailByUsername(this.username).subscribe((data)=>{
+                    console.log(data)
+                    this.language = data.language
+                    this.code = this.map.get(this.language)
+                    console.log(this.code)
+                    this.messengerService.sendProducts();
+                    //this.translateService.setDefaultLang(this.language);
+                  })
+                  
+                })
     
   }
 
   getProducts(t: string, p: string, pr: string, s: string): Observable<Product[]>{
+    console.log
     if(t=="" && p!="" && pr!="" && s==""){
     return this.http.get<Product[]>(productsUrl,{
       params:{
        // type: t,
         filter2: p,
-        price: pr
+        price: pr,
+        language: this.code
        
       }
     });
@@ -37,7 +67,8 @@ export class ProductService {
         filter1: t,
        // purity: p,
         price: pr,
-        sort: s
+        sort: s,
+        language: this.code
         
       }
     });
@@ -47,7 +78,8 @@ export class ProductService {
         filter2: p,
        // purity: p,
         price: pr,
-        sort: s
+        sort: s,
+        language: this.code
       }
     });
   }else if(t!="" && p=="" && pr!="" && s==""){
@@ -55,7 +87,8 @@ export class ProductService {
       params:{
        // type: t,
         filter1: t,
-        price: pr
+        price: pr,
+        language: this.code
       }
     });
   }else if(p=="" && t=="" && pr!=""){
@@ -63,7 +96,8 @@ export class ProductService {
       params:{
       //  type: t,
        // purity: p,
-        price: pr
+        price: pr,
+        language: this.code
       }
     });
   }else{
@@ -72,7 +106,8 @@ export class ProductService {
         filter1: t,
         filter2: p,
         price: pr,
-        sort: s
+        sort: s,
+        language: this.code
       }
     });
   }
