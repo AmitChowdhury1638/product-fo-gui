@@ -23,8 +23,7 @@ export class WishlistService {
                 this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
                   this.username = username
                   console.log(this.username)
-                  
-                })
+                  })
                 
                }
 
@@ -32,6 +31,7 @@ export class WishlistService {
   getProducts(){
     console.log(this.username)
     this.registerService.getUserDetailByUsername(this.username).subscribe((data)=>{
+      console.log(data)
       this.res = data
       this.myArray = this.res.wishlistIds.split(',');
       

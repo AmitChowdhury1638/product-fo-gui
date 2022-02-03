@@ -93,13 +93,7 @@ export class ProductViewComponent implements OnInit {
 
   view(){
     this.productService.getById(this.id).subscribe((products)=>{
-      this.products=products
-        this.key1 = this.products.name + "_" + this.code
-        this.products.name = this.map.get(this.key1)
-        this.key2 = this.products.description + "_" + this.code
-        this.products.description = this.map.get(this.key2)
-
-     
+      this.products=products 
       /*this.localeTranslationService.getLocaleTranslationByKey(this.products.description, this.code).subscribe((data)=>{
         
         this.products.description = data.translation

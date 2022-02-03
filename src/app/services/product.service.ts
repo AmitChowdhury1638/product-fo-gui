@@ -121,7 +121,11 @@ export class ProductService {
     }
 
    getById(id: any): Observable<Product[]> {
-    return this.http.get<Product[]>('http://localhost:8080/products/'+id)
+    return this.http.get<Product[]>('http://localhost:8080/products/'+id, {
+      params: {
+        language: this.code
+      }
+    })
   }
 
    getSortedProducts(): Observable<Product[]> {

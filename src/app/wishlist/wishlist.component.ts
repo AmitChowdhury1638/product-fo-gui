@@ -50,6 +50,11 @@ export class WishlistComponent implements OnInit {
       this.code = "ben"
       this.getProducts();
     })
+
+    this.clickEventSubscription= this.messengerService.getLogin().subscribe((language)=>{
+      
+      this.getProducts();
+    })
   
     this.getProducts()
   }
@@ -57,6 +62,7 @@ export class WishlistComponent implements OnInit {
   getProducts(){
     this.wishlistService.getProducts().subscribe(res=>{
       this.wishlistItems = res;
+      console.log(this.wishlistItems)
     
       // this.wishlistItems.forEach((item: {  id: any, name: any}) => {
       //   this.productService.getById(item.id).subscribe((data)=>{
@@ -66,12 +72,12 @@ export class WishlistComponent implements OnInit {
       //   })
 
       // })
-    this.wishlistItems.forEach((item: {  description: any}) => {
+    /*this.wishlistItems.forEach((item: {  description: any}) => {
          
          //this.key = item.name + "_" + this.code;
          item.description = "diamond_rings_hin"
          console.log(this.key)
-      })
+      })*/
     })
     
        }

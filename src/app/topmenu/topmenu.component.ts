@@ -33,6 +33,7 @@ export class TopmenuComponent implements OnInit {
               private router: Router,
               private translateService: TranslateService,
               private registerService: RegisterService) {
+
                 this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
                   this.value = username
                   this.sharedService.getProducts().subscribe(res=>{
@@ -60,25 +61,17 @@ export class TopmenuComponent implements OnInit {
     this.clickEventSubscription= this.messengerService.getLanguage().subscribe((language)=>{
       console.log(language)
       this.login1 = false
-       
     })
 
     this.clickEventSubscription= this.messengerService.getLoginValue().subscribe((value)=>{
-      this.login1 = value
-       
+      this.login1 = value   
     })
 
-    // this.clickEventSubscription= this.messengerService.getLogin().subscribe((username)=>{
-    //   console.log("pp")
-      
-    // })
-    this.sharedService.getProducts()
-    .subscribe(res=>{
+    this.sharedService.getProducts().subscribe(res=>{
       this.totalCartItem = res.length;
     })
-    console.log(this.value)
-    this.wishlistService.getProducts()
-    .subscribe(res=>{
+
+    this.wishlistService.getProducts().subscribe(res=>{
       this.totalWishlistItem = res.length;
     })
     

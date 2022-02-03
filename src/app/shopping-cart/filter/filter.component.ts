@@ -43,7 +43,6 @@ export class FilterComponent implements OnInit {
               private route: ActivatedRoute,
               private msg: MessengerService,
               private configurationService: ConfigurationService) { 
-                
                 /*this.clickEventSubscription= this.msg.getLanguage().subscribe((language)=>{
                   console.log("chv")
                   this.language = language
@@ -63,23 +62,45 @@ export class FilterComponent implements OnInit {
               }
 
   ngOnInit(): void {
-    this.clickEventSubscription= this.msg.getLanguage().subscribe((language: string)=>{
-      console.log(language)
+
+    this.clickEventSubscription= this.msg.getProducts().subscribe(()=>{
+      console.log("pp")
+      this.getFilter1();
+      this.getFilter2();
+      this.getFilter3();
+      this.getFilter1Heading();
+    this.getFilter2Heading();
+    this.getFilter3Heading();
     })
 
-    
+    this.getFilter1();
+    this.getFilter2();
+    this.getFilter3();
+    this.getSlider1();     
+    this.getFilter1Heading();
+    this.getFilter2Heading();
+    this.getFilter3Heading();
+  }
+
+  getFilter1() {
     this.filterService.getFilter1().subscribe((filter)=>{
       this.f1=filter;
     })
+  }
 
+  getFilter2() {
     this.filterService.getFilter2().subscribe((filter)=>{
       this.f2=filter;
     })
+  }
 
+  getFilter3() {
     this.filterService.getFilter3().subscribe((filter)=>{
       this.f3=filter;
     })
+  }
 
+  getSlider1(){
     this.filterService.getSlider1().subscribe((filter)=>{
       this.slider1=filter
        this.rangeValues[0]=this.slider1[0].minValue
@@ -88,36 +109,25 @@ export class FilterComponent implements OnInit {
       //this.rangeValues[0]=0;
       //this.rangeValues[1]=100000;
     })
-    
-   
-    this.getFilter1()
-    this.getFilter2()
-    this.getFilter3()
-  
-    
 
-    
-
-   
   }
 
-  getFilter1(){
-    this.configurationService.getConfigurationByKey("filter1", this.code).subscribe((data)=>{
+  getFilter1Heading(){
+    this.configurationService.getConfigurationByKey("filter1").subscribe((data)=>{
       this.filter_1=data[0].value
       console.log(data)
     })
-
   }
 
-  getFilter2(){
-    this.configurationService.getConfigurationByKey("filter2", this.code).subscribe((data)=>{
+  getFilter2Heading(){
+    this.configurationService.getConfigurationByKey("filter2").subscribe((data)=>{
       this.filter_2=data[0].value
       console.log(data)
     })
   }
 
-  getFilter3(){
-    this.configurationService.getConfigurationByKey("filter3", this.code).subscribe((data)=>{
+  getFilter3Heading(){
+    this.configurationService.getConfigurationByKey("filter3").subscribe((data)=>{
       this.filter_3=data[0].value
       console.log(data)
     })

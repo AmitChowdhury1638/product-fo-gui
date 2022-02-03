@@ -52,7 +52,7 @@ export class ContactUsComponent implements OnInit {
   }
 
   getMobileNumber(){
-    this.configurationService.getConfigurationByKey("mobile number", this.code).subscribe((data)=>{
+    this.configurationService.getConfigurationByKey("mobile number").subscribe((data)=>{
       this.mobile=data[0].value
       console.log(data)
     })
@@ -60,7 +60,7 @@ export class ContactUsComponent implements OnInit {
   }
 
   getAddress(){
-    this.configurationService.getConfigurationByKey("address", this.code).subscribe((data)=>{
+    this.configurationService.getConfigurationByKey("address").subscribe((data)=>{
       this.address=data[0].value
       console.log(data)
     })
@@ -68,7 +68,7 @@ export class ContactUsComponent implements OnInit {
   }
 
   getEmail(){
-    this.configurationService.getConfigurationByKey("email", this.code).subscribe((data)=>{
+    this.configurationService.getConfigurationByKey("email").subscribe((data)=>{
       this.contactUsEmail=data[0].value
       console.log(data)
     })
